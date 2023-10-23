@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "airbnb.Infrastructure/1.0.0": {
+        "dependencies": {
+          "airbnb.Application": "1.0.0"
+        },
+        "runtime": {
+          "airbnb.Infrastructure.dll": {}
+        }
+      },
+      "airbnb.Application/1.0.0": {
+        "dependencies": {
+          "airbnb.Domain": "1.0.0"
+        },
+        "runtime": {
+          "airbnb.Application.dll": {}
+        }
+      },
+      "airbnb.Domain/1.0.0": {
+        "runtime": {
+          "airbnb.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "airbnb.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "airbnb.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "airbnb.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

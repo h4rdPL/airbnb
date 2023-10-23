@@ -1,0 +1,12 @@
+C:\_programowanie\airbnb\airbnb.Contracts\bin\Debug\net7.0\airbnb.Contracts.deps.json
+C:\_programowanie\airbnb\airbnb.Contracts\bin\Debug\net7.0\airbnb.Contracts.dll
+C:\_programowanie\airbnb\airbnb.Contracts\bin\Debug\net7.0\airbnb.Contracts.pdb
+C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\airbnb.Contracts.csproj.AssemblyReference.cache
+C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\airbnb.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\airbnb.Contracts.AssemblyInfoInputs.cache
+C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\airbnb.Contracts.AssemblyInfo.cs
+C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\airbnb.Contracts.csproj.CoreCompileInputs.cache
+C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\airbnb.Contracts.dll
+C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\refint\airbnb.Contracts.dll
+C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\airbnb.Contracts.pdb
+C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\ref\airbnb.Contracts.dll

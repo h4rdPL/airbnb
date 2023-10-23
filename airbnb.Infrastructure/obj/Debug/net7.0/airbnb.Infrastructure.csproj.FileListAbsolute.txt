@@ -1,0 +1,17 @@
+C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Infrastructure.deps.json
+C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Infrastructure.dll
+C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Infrastructure.pdb
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\airbnb.Infrastructure.csproj.AssemblyReference.cache
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\airbnb.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\airbnb.Infrastructure.AssemblyInfoInputs.cache
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\airbnb.Infrastructure.AssemblyInfo.cs
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\airbnb.Infrastructure.csproj.CoreCompileInputs.cache
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\airbnb.Infrastructure.dll
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\refint\airbnb.Infrastructure.dll
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\airbnb.Infrastructure.pdb
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\ref\airbnb.Infrastructure.dll
+C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Application.dll
+C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Domain.dll
+C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Application.pdb
+C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Domain.pdb
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\airbnb.Infrastructure.csproj.CopyComplete
