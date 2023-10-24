@@ -23,5 +23,7 @@ To run the application locally, follow these steps:
 
 ## Additional Information
 - Database diagram
+
+
 ![alt text](https://github.com/h4rdPL/airbnb/blob/main/diagram.svg)
 
