@@ -1,6 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\airbnb.Contracts\airbnb.Contracts.csproj" />
     <ProjectReference Include="..\airbnb.Domain\airbnb.Domain.csproj" />
   </ItemGroup>
 

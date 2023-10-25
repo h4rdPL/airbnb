@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "tZiIClm2x0jiY1o0BENhwOjfHh15c9DGXn6LH4dlPqa+fRr5x4v0OxhxxshX4HmiyIHyuPqhFLu0TsNf/v18yA==",
+  "dgSpecHash": "WNHTDqKpysaGsqS7C+3aRc9sRGZd1E/ekqbayX963WfgW+YCdgiN3OpdEdeVTKDIbJw8D/gztGyu1xQIURNvsw==",
   "success": true,
   "projectFilePath": "C:\\_programowanie\\airbnb\\airbnb.Application\\airbnb.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

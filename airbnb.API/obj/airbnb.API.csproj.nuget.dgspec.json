@@ -107,6 +107,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj"
+              },
               "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
                 "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj"
               }
@@ -122,6 +125,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -165,7 +174,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

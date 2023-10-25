@@ -10,3 +10,6 @@ C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\airbnb.Contracts.dll
 C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\refint\airbnb.Contracts.dll
 C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\airbnb.Contracts.pdb
 C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\ref\airbnb.Contracts.dll
+C:\_programowanie\airbnb\airbnb.Contracts\bin\Debug\net7.0\airbnb.Domain.dll
+C:\_programowanie\airbnb\airbnb.Contracts\bin\Debug\net7.0\airbnb.Domain.pdb
+C:\_programowanie\airbnb\airbnb.Contracts\obj\Debug\net7.0\airbnb.Contracts.csproj.CopyComplete

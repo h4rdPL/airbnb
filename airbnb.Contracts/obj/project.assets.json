@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "airbnb.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/airbnb.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/airbnb.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "airbnb.Domain/1.0.0": {
+      "type": "project",
+      "path": "../airbnb.Domain/airbnb.Domain.csproj",
+      "msbuildProject": "../airbnb.Domain/airbnb.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "airbnb.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\mateu\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
+              "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
