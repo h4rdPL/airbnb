@@ -4,14 +4,224 @@
     "C:\\_programowanie\\airbnb\\airbnb.Tests\\airbnb.Tests.csproj": {}
   },
   "projects": {
-    "C:\\_programowanie\\airbnb\\airbnb.Tests\\airbnb.Tests.csproj": {
+    "C:\\_programowanie\\airbnb\\airbnb.API\\airbnb.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_programowanie\\airbnb\\airbnb.Tests\\airbnb.Tests.csproj",
-        "projectName": "airbnb.Tests",
-        "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Tests\\airbnb.Tests.csproj",
+        "projectUniqueName": "C:\\_programowanie\\airbnb\\airbnb.API\\airbnb.API.csproj",
+        "projectName": "airbnb.API",
+        "projectPath": "C:\\_programowanie\\airbnb\\airbnb.API\\airbnb.API.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "C:\\_programowanie\\airbnb\\airbnb.Tests\\obj\\",
+        "outputPath": "C:\\_programowanie\\airbnb\\airbnb.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\_programowanie\\airbnb\\airbnb.Application\\airbnb.Application.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Application\\airbnb.Application.csproj"
+              },
+              "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj"
+              },
+              "C:\\_programowanie\\airbnb\\airbnb.Infrastructure\\airbnb.Infrastructure.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Infrastructure\\airbnb.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.7, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_programowanie\\airbnb\\airbnb.Application\\airbnb.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_programowanie\\airbnb\\airbnb.Application\\airbnb.Application.csproj",
+        "projectName": "airbnb.Application",
+        "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Application\\airbnb.Application.csproj",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
+        "outputPath": "C:\\_programowanie\\airbnb\\airbnb.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj"
+              },
+              "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj",
+        "projectName": "airbnb.Contracts",
+        "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
+        "outputPath": "C:\\_programowanie\\airbnb\\airbnb.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj",
+        "projectName": "airbnb.Domain",
+        "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
+        "outputPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,10 +249,158 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_programowanie\\airbnb\\airbnb.Infrastructure\\airbnb.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_programowanie\\airbnb\\airbnb.Infrastructure\\airbnb.Infrastructure.csproj",
+        "projectName": "airbnb.Infrastructure",
+        "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Infrastructure\\airbnb.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
+        "outputPath": "C:\\_programowanie\\airbnb\\airbnb.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\_programowanie\\airbnb\\airbnb.Application\\airbnb.Application.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Application\\airbnb.Application.csproj"
+              },
+              "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_programowanie\\airbnb\\airbnb.Tests\\airbnb.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_programowanie\\airbnb\\airbnb.Tests\\airbnb.Tests.csproj",
+        "projectName": "airbnb.Tests",
+        "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Tests\\airbnb.Tests.csproj",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
+        "outputPath": "C:\\_programowanie\\airbnb\\airbnb.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\_programowanie\\airbnb\\airbnb.API\\airbnb.API.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.API\\airbnb.API.csproj"
+              },
+              "C:\\_programowanie\\airbnb\\airbnb.Application\\airbnb.Application.csproj": {
+                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Application\\airbnb.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[7.0.0-alpha.3, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.5.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.69, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

@@ -17,3 +17,5 @@ C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Domain.pd
 C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\airbnb.Infrastructure.csproj.CopyComplete
 C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Contracts.dll
 C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Contracts.pdb
+C:\_programowanie\airbnb\airbnb.Infrastructure\bin\Debug\net7.0\airbnb.Infrastructure.runtimeconfig.json
+C:\_programowanie\airbnb\airbnb.Infrastructure\obj\Debug\net7.0\airbnb.Infrastructure.genruntimeconfig.cache
