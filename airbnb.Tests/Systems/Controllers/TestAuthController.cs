@@ -2,10 +2,9 @@ using airbnb.API.Controllers;
 using airbnb.Application.Common.Interfaces;
 using airbnb.Application.Common.Services;
 using airbnb.Domain.Models;
+using airbnb.Tests.Fixtures;
 using FluentAssertions;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
 using Moq;
 
 namespace airbnb.Tests.Systems.Controller;
@@ -13,55 +12,58 @@ namespace airbnb.Tests.Systems.Controller;
 public class UnitTest1
 {
     [Theory]
-    [InlineData("test@gmail.com", "password")]
-    public async Task Post_OnSuccess_Returns_StatusCode200(string email, string password)
+    [InlineData("test@gmail.com", "password", "John", "Doe")]
+    public async Task Post_OnSuccess_Returns_StatusCode200(string email, string password, string FirstName, string LastName)
     {
-        //Arange
+        // Arrange
         var mockUsersService = new Mock<IUsersService>();
+        mockUsersService
+            .Setup(service => service.Register(email, password, FirstName, LastName))
+            .ReturnsAsync(UserFixture.CreateTestUser());
+
         var sut = new UsersController(mockUsersService.Object);
 
-        //Act
+        // Act
+        var result = (OkObjectResult)await sut.Register(email, password, FirstName, LastName);
 
-        var result = (OkObjectResult)await sut.Register(email, password);
-
-        //Assert
+        // Assert
         result.StatusCode.Should().Be(200);
     }
 
     [Theory]
-    [InlineData("test@gmail.com", "password")]
-    public async Task Post_OnSuccess_InvokesUserServiceExactlyOnce(string email, string password)
+    [InlineData("test@gmail.com", "password", "John", "Doe")]
+    public async Task Post_OnSuccess_InvokesUserServiceExactlyOnce(string email, string password, string FirstName, string LastName)
     {
         // Arrange
         var mockUsersService = new Mock<IUsersService>();
         mockUsersService
-        .Setup(service => service.Register(email, password))
+        .Setup(service => service.Register(email, password, FirstName, LastName))
         .ReturnsAsync(new User());
         var sut = new UsersController(mockUsersService.Object);
 
         // Act
-        var result = (OkObjectResult)await sut.Register(email, password);
+        var result = (OkObjectResult)await sut.Register(email, password, FirstName, LastName);
         
         // Assert
         mockUsersService.Verify(
-            service => service.Register(email, password),
+            service => service.Register(email, password, FirstName, LastName),
             Times.Once());
     }
 
     [Theory]
-    [InlineData("test@gmail.com", "password")]
-    public async Task Post_OnSuccess_RegisterUser(string email, string password)
+    [InlineData("test@gmail.com", "password", "John", "Doe")]
+    public async Task Post_OnSuccess_RegisterUser(string email, string password, string FirstName, string LastName)
     {
         // Arrange
         var mockUsersService = new Mock<IUsersService>();
         mockUsersService
-            .Setup(service => service.Register(email, password))
+            .Setup(service => service.Register(email, password, FirstName, LastName))
             .ReturnsAsync(new User());
 
         var sut = new UsersController(mockUsersService.Object);
 
         // Act
-        var result = await sut.Register(email, password);
+        var result = await sut.Register(email, password, FirstName, LastName);
 
         // Assert
         result.Should().BeOfType<OkObjectResult>();

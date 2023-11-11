@@ -17,9 +17,9 @@ namespace airbnb.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string Email, string Password)
+        public async Task<IActionResult> Register(string Email, string Password, string FirstName, string LastName)
         {
-            var user = _userService.Register(Email, Password);
+            var user = _userService.Register(Email, Password,FirstName, LastName);
             return Ok(user);
         }
     }

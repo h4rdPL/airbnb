@@ -159,3 +159,8 @@ C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\airbnb.Application.pdb
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\airbnb.Contracts.pdb
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\airbnb.Domain.pdb
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\airbnb.Infrastructure.pdb
+C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
