@@ -15,7 +15,8 @@ Soon
 ## Usage
 - Soon
 ## Technologies Used
-- Soon
+- .NET (Clean Architecture, Test Driven Design)
+- Xunit
 ## Setup
 To run the application locally, follow these steps:
 
