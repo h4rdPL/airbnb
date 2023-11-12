@@ -10,6 +10,7 @@ namespace airbnb.Application.Common.Services
         private const int Iteration = 10000;
         private static readonly HashAlgorithmName _hashAlgorithmName = HashAlgorithmName.SHA256;
         private const char Delimiter = ';';
+
         public byte[] Salt { get; private set; }
         public byte[] Hash { get; private set; }
 
@@ -23,8 +24,16 @@ namespace airbnb.Application.Common.Services
 
         public bool VerifyPassword(string passwordHash, string userPassword)
         {
-            throw new NotImplementedException();
+            var element = passwordHash.Split(Delimiter);
+            var salt = Convert.FromBase64String(element[0]);
+            var hash = Convert.FromBase64String(element[1]);
+
+            Console.WriteLine(salt + " " + hash);
+            var hashInput = Rfc2898DeriveBytes.Pbkdf2(userPassword, salt, Iteration, _hashAlgorithmName, KeySize);
+
+            return CryptographicOperations.FixedTimeEquals(hash, hashInput);
         }
     }
+
 
 }

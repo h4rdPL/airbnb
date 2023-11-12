@@ -1,17 +1,16 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Domain.Models;
 using airbnb.Infrastructure.ApplicationDbContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace airbnb.Infrastructure.Persistence
 {
     public class UserRepository : IUserRepository
     {
         private readonly AirbnbDbContext _context;
-        private readonly IPasswordHasherService _passwordHasherService;
-        public UserRepository(AirbnbDbContext context, IPasswordHasherService passwordHasherService)
+        public UserRepository(AirbnbDbContext context)
         {
             _context = context;
-            _passwordHasherService = passwordHasherService;
 
         }
 
@@ -25,6 +24,12 @@ namespace airbnb.Infrastructure.Persistence
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<User> GetUserByEmail(string email)
+        {
+            var result = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            return result;
         }
     }
 }

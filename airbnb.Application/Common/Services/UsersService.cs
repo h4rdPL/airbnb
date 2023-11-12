@@ -12,6 +12,17 @@ namespace airbnb.Application.Common.Services
             _userRepository = userRepository;
         }
 
+        public async Task<User> GetUserByEmail(string email)
+        {   
+            var result = await _userRepository.GetUserByEmail(email);
+            return result;
+        }
+
+        public Task<User> Login(string email, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<User> Register(string email, string password, string FirstName, string LastName)
         {
             var newUser = new User

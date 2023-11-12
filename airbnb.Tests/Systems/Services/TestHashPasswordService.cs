@@ -5,7 +5,7 @@ namespace airbnb.Tests.Systems.Services
     public class TestHashPasswordService
     {
         [Theory]
-        [InlineData("examplePassword")]
+        [InlineData("string")]
         public void HashPassword_ShouldReturn_HashedPassword(string password)
         {
             // Arrange
@@ -20,5 +20,6 @@ namespace airbnb.Tests.Systems.Services
             Assert.Contains(Convert.ToBase64String(hasher.Salt), hashedPassword);
             Assert.Contains(Convert.ToBase64String(hasher.Hash), hashedPassword);
         }
+
     }
 }
