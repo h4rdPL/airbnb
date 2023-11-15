@@ -1,6 +1,6 @@
 using airbnb.API.Controllers;
 using airbnb.Application.Common.Interfaces;
-using airbnb.Application.Common.Services;
+using airbnb.Application.Services;
 using airbnb.Domain.Models;
 using airbnb.Tests.Fixtures;
 using FluentAssertions;

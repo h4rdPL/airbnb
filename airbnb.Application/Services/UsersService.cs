@@ -1,7 +1,7 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Domain.Models;
 
-namespace airbnb.Application.Common.Services
+namespace airbnb.Application.Services
 {
     public class UsersService : IUsersService
     {
@@ -13,7 +13,7 @@ namespace airbnb.Application.Common.Services
         }
 
         public async Task<User> GetUserByEmail(string email)
-        {   
+        {
             var result = await _userRepository.GetUserByEmail(email);
             return result;
         }

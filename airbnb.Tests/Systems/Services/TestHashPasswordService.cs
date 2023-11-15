@@ -1,4 +1,4 @@
-﻿using airbnb.Application.Common.Services;
+﻿using airbnb.Application.Services;
 
 namespace airbnb.Tests.Systems.Services
 {

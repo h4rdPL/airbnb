@@ -1,7 +1,7 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using System.Security.Cryptography;
 
-namespace airbnb.Application.Common.Services
+namespace airbnb.Application.Services
 {
     public class PasswordHasherService : IPasswordHasherService
     {

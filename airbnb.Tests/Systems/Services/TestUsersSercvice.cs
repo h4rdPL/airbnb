@@ -1,9 +1,8 @@
 ﻿using airbnb.Application.Common.Interfaces;
-using airbnb.Application.Common.Services;
+using airbnb.Application.Services;
 using airbnb.Domain.Models;
 using airbnb.Tests.Fixtures;
 using FluentAssertions;
-using Microsoft.AspNetCore.Identity;
 using Moq;
 
 namespace airbnb.Tests.Systems.Services

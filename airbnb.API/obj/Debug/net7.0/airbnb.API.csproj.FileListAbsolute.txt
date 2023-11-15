@@ -77,3 +77,10 @@ C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\runtimes\win\lib\net6.0\Sys
 C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\AutoMapper.dll
+C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\Humanizer.dll
+C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\System.CodeDom.dll

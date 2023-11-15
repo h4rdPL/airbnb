@@ -1,7 +1,7 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using System.Text.RegularExpressions;
 
-namespace airbnb.Application.Common.Services
+namespace airbnb.Application.Services
 {
     public class EmailService : IEmailService
     {

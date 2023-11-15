@@ -1,6 +1,7 @@
 ﻿using airbnb.Application.Common.Interfaces;
-using airbnb.Application.Common.Services;
+using airbnb.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace airbnb.Application
 {
@@ -8,9 +9,10 @@ namespace airbnb.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddTransient<IUsersService, UsersService>();
-            services.AddTransient<IEmailService, EmailService>();
-
+            services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IRoomService, RoomService>();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
     }

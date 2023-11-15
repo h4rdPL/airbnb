@@ -164,3 +164,5 @@ C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.AspNetCore.Cryp
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\AutoMapper.dll
+C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

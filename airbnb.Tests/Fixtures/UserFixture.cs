@@ -4,7 +4,7 @@ namespace airbnb.Tests.Fixtures
 {
     public static class UserFixture
     {
-        public static User CreateTestUser() =>
+        internal static User CreateTestUser() =>
                 new User
                 {
                     Id = 1,
