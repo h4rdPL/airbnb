@@ -23,19 +23,22 @@ namespace airbnb.Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task<User> Register(string email, string password, string FirstName, string LastName)
+        public async Task<User> Register(string Email, string Password, string RepeatedPassword, string FirstName, string LastName)
         {
             var newUser = new User
             {
                 FirstName = FirstName,
                 LastName = LastName,
-                Email = email,
-                Password = password
+                Email = Email,
+                Password = Password,
             };
+            if(Password == RepeatedPassword)
+            {
+                await _userRepository.AddUser(newUser);
+                return newUser;
+            }
 
-            await _userRepository.AddUser(newUser);
-
-            return newUser;
+            return null;
         }
     }
 

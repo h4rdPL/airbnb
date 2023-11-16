@@ -1,12 +1,9 @@
 ﻿using airbnb.Contracts.RoomsOffer;
 using airbnb.Domain.Enum;
+using airbnb.Domain.Models;
 using airbnb.Infrastructure.Rooms;
 using airbnb.Tests.Fixtures;
 using FluentAssertions;
-using airbnb.Domain.Models;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
-using Castle.Core.Logging;
 
 namespace airbnb.Tests.Systems.Repository
 {

@@ -1,5 +1,4 @@
 ﻿using airbnb.Application.Common.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace airbnb.API.Controllers
@@ -17,9 +16,9 @@ namespace airbnb.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string Email, string Password, string FirstName, string LastName)
+        public async Task<IActionResult> Register(string Email, string Password, string RepeatedPassword, string FirstName, string LastName)
         {
-            var user = _userService.Register(Email, Password,FirstName, LastName);
+            var user = _userService.Register(Email, Password, RepeatedPassword, FirstName, LastName);
             return Ok(user);
         }
     }

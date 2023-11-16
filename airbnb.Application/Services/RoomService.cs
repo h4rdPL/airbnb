@@ -22,7 +22,7 @@ namespace airbnb.Application.Services
             }
             catch (Exception ex)
             {
-                throw; 
+                throw new Exception("En error occured while trying to invoke repository", ex); 
             }
         }
     }
