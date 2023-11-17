@@ -30,10 +30,5 @@ namespace airbnb.Tests.Systems.Repository
             savedUser.Email.Should().Be(testUser.Email);
             savedUser.Password.Should().Be(testUser.Password);
         }
-
-
-
-
-
     }
 }

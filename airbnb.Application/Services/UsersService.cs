@@ -6,10 +6,14 @@ namespace airbnb.Application.Services
     public class UsersService : IUsersService
     {
         private readonly IUserRepository _userRepository;
+        private readonly ICookieService _cookieService;
+        private readonly IPasswordHasherService _passwordHasher;
 
-        public UsersService(IUserRepository userRepository)
+        public UsersService(IUserRepository userRepository, ICookieService cookieService, IPasswordHasherService passwordHasher)
         {
             _userRepository = userRepository;
+            _cookieService = cookieService;
+            _passwordHasher = passwordHasher;
         }
 
         public async Task<User> GetUserByEmail(string email)
@@ -18,10 +22,18 @@ namespace airbnb.Application.Services
             return result;
         }
 
-        public Task<User> Login(string email, string password)
+        public async Task<User> Login(string email, string password)
         {
-            throw new NotImplementedException();
+            var user = await _userRepository.GetUserByEmail(email);
+
+            if (user != null)
+            {
+                _cookieService.SetUserCookie(user);
+                return user;
+            }
+            return null;
         }
+
 
         public async Task<User> Register(string Email, string Password, string RepeatedPassword, string FirstName, string LastName)
         {
@@ -32,7 +44,8 @@ namespace airbnb.Application.Services
                 Email = Email,
                 Password = Password,
             };
-            if(Password == RepeatedPassword)
+
+            if (Password == RepeatedPassword)
             {
                 await _userRepository.AddUser(newUser);
                 return newUser;
