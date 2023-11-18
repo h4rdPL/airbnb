@@ -13,22 +13,26 @@ public class TestAuthController
 {
 
     [Theory]
-    [InlineData("test@gmail.com", "password","password", "John", "Doe")]
+    [InlineData("test@gmail.com", "password", "password", "John", "Doe")]
     public async Task Post_OnSuccess_WhenRegisterUser_Returns_StatusCode200(string email, string password, string RepeatedPassword, string FirstName, string LastName)
     {
         // Arrange
         var mockUsersService = new Mock<IUsersService>();
         mockUsersService
-            .Setup(service => service.Register(email, password, RepeatedPassword, FirstName, LastName));
+            .Setup(service => service.Register(email, password, RepeatedPassword, FirstName, LastName))
+            .ReturnsAsync(new User()); 
 
         var sut = new UsersController(mockUsersService.Object);
 
         // Act
-        var result = (OkObjectResult)await sut.Register(email, password, RepeatedPassword, FirstName, LastName);
+        var result = await sut.Register(email, password, RepeatedPassword, FirstName, LastName);
 
         // Assert
-        result.StatusCode.Should().Be(200);
+        result.Should().BeOfType<OkObjectResult>();
+        var objectResult = (OkObjectResult)result;
+        objectResult.StatusCode.Should().Be(200);
     }
+
 
     [Theory]
     [InlineData("test@gmail.com", "password", "password", "John", "Doe")]
@@ -70,6 +74,8 @@ public class TestAuthController
         result.Should().BeOfType<OkObjectResult>();
 
         var objectResult = (OkObjectResult)result;
-        objectResult.Value.Should().BeOfType<Task<User>>();
+        var user = objectResult.Value.Should().BeAssignableTo<User>().Subject;
+        // Additional assertions on the 'user' object if needed
     }
+
 }
