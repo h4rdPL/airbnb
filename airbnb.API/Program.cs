@@ -18,13 +18,16 @@ builder.Services.AddDbContext<AirbnbDbContext>(options =>
 });
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie();
+    .AddCookie("default", o =>
+    {
+        o.Cookie.Name = "cookie";
+    });
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddHttpContextAccessor();
-
 builder.Services.AddApplication().AddInfrastructure();
 
-var app = builder.Build();
+var app = builder.Build(); 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

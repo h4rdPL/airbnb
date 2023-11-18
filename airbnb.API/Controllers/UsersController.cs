@@ -18,8 +18,30 @@ namespace airbnb.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(string Email, string Password, string RepeatedPassword, string FirstName, string LastName)
         {
-            var user = _userService.Register(Email, Password, RepeatedPassword, FirstName, LastName);
-            return Ok(user);
+            var user = await _userService.Register(Email, Password, RepeatedPassword, FirstName, LastName);
+
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return BadRequest("Password and repeated password do not match.");
+            }
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(string Email, string Password)
+        {
+            try
+            {
+                var response = await _userService.Login(Email, Password);
+                return Ok(response);
+            } catch (Exception ex)
+            {
+                throw new Exception("Error", ex);
+            }
+
         }
     }
 }

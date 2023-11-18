@@ -24,27 +24,35 @@ namespace airbnb.Application.Services
         }
 
 
-        public async void SetUserCookie(User user)
+        public async Task SetUserCookie(User user)
         {
-            var claims = new List<Claim>
+            try
             {
+                var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.FirstName),
                 new Claim(ClaimTypes.Email, user.Email),
             };
 
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            var authProperties = new AuthenticationProperties
+                var authProperties = new AuthenticationProperties
+                {
+                    AllowRefresh = true,
+                    ExpiresUtc = DateTimeOffset.UtcNow.ToLocalTime().AddMinutes(10),
+                    IsPersistent = true,
+                };
+
+                await _httpContextAccessor.HttpContext.SignInAsync(
+                    "default",
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
+            } catch (Exception ex)
             {
-                AllowRefresh = true,
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                IsPersistent = true,
-            };
-
-            await _httpContextAccessor.HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
-                authProperties);
+                throw new Exception("Error while return cookie", ex);
+            }
+      
         }
     }
 }

@@ -148,11 +148,16 @@ namespace airbnb.Infrastructure.Migrations
                     b.Property<int>("TotalOccupancy")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
 
                     b.HasIndex("AmenitiesId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Rooms");
                 });
@@ -179,6 +184,9 @@ namespace airbnb.Infrastructure.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RepeatedPassword")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -219,6 +227,10 @@ namespace airbnb.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("airbnb.Domain.Models.User", null)
+                        .WithMany("Rooms")
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Address");
 
                     b.Navigation("Amenities");
@@ -232,6 +244,8 @@ namespace airbnb.Infrastructure.Migrations
             modelBuilder.Entity("airbnb.Domain.Models.User", b =>
                 {
                     b.Navigation("Reservations");
+
+                    b.Navigation("Rooms");
                 });
 #pragma warning restore 612, 618
         }

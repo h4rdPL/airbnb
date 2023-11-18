@@ -13,6 +13,7 @@ namespace airbnb.Application
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<ICookieService, CookieService>();
+            services.AddScoped<IPasswordHasherService, PasswordHasherService>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
