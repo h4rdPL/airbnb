@@ -1,4 +1,6 @@
 ﻿using airbnb.Application.Common.Interfaces;
+using airbnb.Contracts.Authentication;
+using airbnb.Contracts.Authentication.LoginResponse;
 using Microsoft.AspNetCore.Mvc;
 
 namespace airbnb.API.Controllers
@@ -16,32 +18,39 @@ namespace airbnb.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string Email, string Password, string RepeatedPassword, string FirstName, string LastName)
-        {
-            var user = await _userService.Register(Email, Password, RepeatedPassword, FirstName, LastName);
-
-            if (user != null)
-            {
-                return Ok(user);
-            }
-            else
-            {
-                return BadRequest("Password and repeated password do not match.");
-            }
-        }
-
-        [HttpPost("login")]
-        public async Task<IActionResult> Login(string Email, string Password)
+        public async Task<ActionResult<AuthResponse>> Register(AuthenticationRequest RegisterRequest)
         {
             try
             {
-                var response = await _userService.Login(Email, Password);
+                var user = await _userService.Register(RegisterRequest);
+
+                if (user != null)
+                {
+                    return Ok(user);
+                }
+                else
+                {
+                    return BadRequest("Password and repeated password do not match.");
+                }
+            } catch (Exception ex)
+            {
+                throw new Exception("Error while register user", ex);
+            }
+           
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<AuthResponse>> Login(LoginRequest loginRequest)
+        {
+            try
+            {
+                var response = await _userService.Login(loginRequest);
                 return Ok(response);
             } catch (Exception ex)
             {
                 throw new Exception("Error", ex);
             }
-
+            
         }
     }
 }

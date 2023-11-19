@@ -1,4 +1,6 @@
 ﻿using airbnb.Application.Common.Interfaces;
+using airbnb.Contracts.Authentication;
+using airbnb.Contracts.Authentication.LoginResponse;
 using airbnb.Domain.Models;
 
 namespace airbnb.Application.Services
@@ -22,37 +24,48 @@ namespace airbnb.Application.Services
             return result;
         }
 
-        public async Task<User> Login(string email, string password)
+        public async Task<AuthResponse> Login(LoginRequest loginRequest)
         {
-            var user = await _userRepository.GetUserByEmail(email);
-
-            if (user != null)
+            try
             {
-                _cookieService.SetUserCookie(user);
-                return user;
+                var user = await _userRepository.GetUserByEmail(loginRequest.Email);
+
+                if (user == null)
+                {
+                    throw new Exception("User not found");
+                }
+
+                var result = _cookieService.SetUserCookie(user);
+                return new AuthResponse(user.FirstName, user.LastName, user.Email);
+
             }
-            return null;
+            catch (Exception ex)
+            {
+                throw new Exception("Error while setting user Cookie", ex);
+            }
         }
 
 
-        public async Task<User> Register(string Email, string Password, string RepeatedPassword, string FirstName, string LastName)
+
+        public async Task<AuthResponse> Register(AuthenticationRequest authenticationRegister)
         {
             var newUser = new User
             {
-                FirstName = FirstName,
-                LastName = LastName,
-                Email = Email,
-                Password = Password,
+                FirstName = authenticationRegister.FirstName,
+                LastName = authenticationRegister.LastName,
+                Email = authenticationRegister.Email,
+                Password = authenticationRegister.Password,
             };
 
-            if (Password == RepeatedPassword)
+            if (authenticationRegister.Password != authenticationRegister.RepeatedPassword)
             {
-                await _userRepository.AddUser(newUser);
-                return newUser;
+                throw new Exception("Password are not the same");
+        
             }
-
-            return null;
+            await _userRepository.AddUser(newUser);
+            return new AuthResponse(newUser.FirstName, newUser.LastName, newUser.Email);
         }
+
 
     }
 

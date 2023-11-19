@@ -1,6 +1,8 @@
 using airbnb.API.Controllers;
 using airbnb.Application.Common.Interfaces;
 using airbnb.Application.Services;
+using airbnb.Contracts.Authentication;
+using airbnb.Contracts.Authentication.LoginResponse;
 using airbnb.Domain.Models;
 using airbnb.Tests.Fixtures;
 using FluentAssertions;
@@ -14,23 +16,24 @@ public class TestAuthController
 
     [Theory]
     [InlineData("test@gmail.com", "password", "password", "John", "Doe")]
-    public async Task Post_OnSuccess_WhenRegisterUser_Returns_StatusCode200(string email, string password, string RepeatedPassword, string FirstName, string LastName)
+    public async Task Post_OnSuccess_WhenRegisterUser_Returns_StatusCode200(string Email, string Password, string RepeatedPassword, string FirstName, string LastName)
     {
         // Arrange
         var mockUsersService = new Mock<IUsersService>();
+        var registerRequest = new AuthenticationRequest(FirstName, LastName, Email, Password, RepeatedPassword);
+        var authResponse = new AuthResponse(FirstName, LastName, Email);
         mockUsersService
-            .Setup(service => service.Register(email, password, RepeatedPassword, FirstName, LastName))
-            .ReturnsAsync(new User()); 
+            .Setup(service => service.Register(registerRequest))
+            .ReturnsAsync(authResponse);
 
         var sut = new UsersController(mockUsersService.Object);
 
         // Act
-        var result = await sut.Register(email, password, RepeatedPassword, FirstName, LastName);
+        var result = await sut.Register(registerRequest);
 
         // Assert
-        result.Should().BeOfType<OkObjectResult>();
-        var objectResult = (OkObjectResult)result;
-        objectResult.StatusCode.Should().Be(200);
+        result.Should().BeOfType<OkObjectResult>();  
+        result.As<OkObjectResult>().StatusCode.Should().Be(200);  
     }
 
 
@@ -40,18 +43,21 @@ public class TestAuthController
     {
         // Arrange
         var mockUsersService = new Mock<IUsersService>();
+        var registerRequest = new AuthenticationRequest(FirstName, LastName, email, password, RepeatedPassword);
+        var authResponse = new AuthResponse(FirstName, LastName, email);
+
         mockUsersService
-        .Setup(service => service.Register(email, password, RepeatedPassword, FirstName, LastName))
-        .ReturnsAsync(UserFixture.CreateTestUser());
+            .Setup(service => service.Register(registerRequest))
+            .ReturnsAsync(authResponse);
 
         var sut = new UsersController(mockUsersService.Object);
 
         // Act
-        var result = (OkObjectResult)await sut.Register(email, password, RepeatedPassword, FirstName, LastName);
-        
+        var result = await sut.Register(registerRequest);
+
         // Assert
         mockUsersService.Verify(
-            service => service.Register(email, password, RepeatedPassword, FirstName, LastName),
+            service => service.Register(registerRequest),
             Times.Once());
     }
 
@@ -61,21 +67,24 @@ public class TestAuthController
     {
         // Arrange
         var mockUsersService = new Mock<IUsersService>();
+        var registerRequest = new AuthenticationRequest(FirstName, LastName, email, password, RepeatedPassword);
+        var authResponse = new AuthResponse(FirstName, LastName, email);
+
         mockUsersService
-            .Setup(service => service.Register(email, password, RepeatedPassword, FirstName, LastName))
-            .ReturnsAsync(new User());
+            .Setup(service => service.Register(registerRequest))
+            .ReturnsAsync(authResponse);
 
         var sut = new UsersController(mockUsersService.Object);
 
         // Act
-        var result = await sut.Register(email, password, RepeatedPassword, FirstName, LastName);
+        var result = await sut.Register(registerRequest);
 
         // Assert
-        result.Should().BeOfType<OkObjectResult>();
+        result.Should().BeOfType<ActionResult<AuthResponse>>();
 
-        var objectResult = (OkObjectResult)result;
+        var objectResult = (ActionResult<AuthResponse>)result;
         var user = objectResult.Value.Should().BeAssignableTo<User>().Subject;
-        // Additional assertions on the 'user' object if needed
     }
+
 
 }

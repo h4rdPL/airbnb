@@ -50,7 +50,6 @@ namespace airbnb.Infrastructure.Rooms
             }
             catch (Exception ex)
             {
-                // Return a more informative error message
                 throw new Exception("An error occurred while processing the room offer. Please try again later.", ex);
             }
         }

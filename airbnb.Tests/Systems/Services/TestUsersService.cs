@@ -1,5 +1,7 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Application.Services;
+using airbnb.Contracts.Authentication;
+using airbnb.Contracts.Authentication.LoginResponse;
 using airbnb.Domain.Models;
 using airbnb.Tests.Fixtures;
 using Microsoft.AspNetCore.Authentication;
@@ -21,15 +23,17 @@ namespace airbnb.Tests.Systems.Services
             var mockRepository = new Mock<IUserRepository>();
             var mockCookieService = new Mock<ICookieService>();
             var mockPasswordService = new Mock<IPasswordHasherService>();
-
+            var registerRequest = new AuthenticationRequest("John", "Doe", "john.doe@gmail.com", Password, RepeatedPassword);
+            var authResponse = new AuthResponse("John", "Doe", "john.deo@gmail.com");
+            
             mockService
-                .Setup(service => service.Register(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync(UserFixture.CreateTestUser());
+                .Setup(service => service.Register(registerRequest))
+                .ReturnsAsync(authResponse);
 
             var userService = new UsersService(mockRepository.Object, mockCookieService.Object, mockPasswordService.Object);
 
             // Act
-            var result = await userService.Register("john.doe@gmail.com", Password, RepeatedPassword, "John", "Doe");
+            var result = await userService.Register(registerRequest);
 
             // Assert
             if (Password == RepeatedPassword)

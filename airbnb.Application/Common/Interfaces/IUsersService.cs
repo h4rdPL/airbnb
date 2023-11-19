@@ -1,11 +1,13 @@
-﻿using airbnb.Domain.Models;
+﻿using airbnb.Contracts.Authentication;
+using airbnb.Contracts.Authentication.LoginResponse;
+using airbnb.Domain.Models;
 
 namespace airbnb.Application.Common.Interfaces
 {
     public interface IUsersService
     {
         Task<User> GetUserByEmail(string Email);
-        Task<User> Login(string Email, string Password);
-        Task<User> Register(string Email, string Password, string RepeatedPassword, string FirstName, string LastName);
+        Task<AuthResponse> Login(LoginRequest loginRequest);
+        Task<AuthResponse> Register(AuthenticationRequest authenticationRegiter);
     }
 }

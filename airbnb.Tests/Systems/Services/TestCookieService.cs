@@ -1,5 +1,6 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Application.Services;
+using airbnb.Contracts.Authentication;
 using airbnb.Tests.Fixtures;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -11,8 +12,9 @@ namespace airbnb.Tests.Systems.Services
 {
     public class TestCookieService
     {
-        [Fact]
-        public async Task Login_WithValidCredentials_SetsUserCookieAndReturnsUser()
+        [Theory]
+        [InlineData("test@gmail.com", "password")]
+        public async Task Login_WithValidCredentials_SetsUserCookieAndReturnsUser(string email, string password)
         {
             // Arrange
             var mockUserRepository = new Mock<IUserRepository>();
@@ -21,22 +23,25 @@ namespace airbnb.Tests.Systems.Services
             var userService = new UsersService(mockUserRepository.Object, mockCookieService.Object, mockPasswordService.Object);
 
             var user = UserFixture.CreateTestUser();
+            var loginRequest = new LoginRequest(email, password) ; 
 
             mockUserRepository
-                .Setup(repo => repo.GetUserByEmail(user.Email))
+                .Setup(repo => repo.GetUserByEmail(loginRequest.Email))
                 .ReturnsAsync(user);
 
             mockCookieService
                 .Setup(cookie => cookie.SetUserCookie(user));
 
             // Act 
-            var result = await userService.Login(user.Email, user.Password);
+            var result = await userService.Login(loginRequest);
 
             // Assert
-            Assert.Equal(user, result);
+            Assert.NotNull(result);
+            Assert.Equal(user.Email, result.Email);
 
-            mockUserRepository.Verify(repo => repo.GetUserByEmail(user.Email), Times.Once);
+            mockUserRepository.Verify(repo => repo.GetUserByEmail(loginRequest.Email), Times.Once);
         }
+
 
         [Fact]
         public async Task WhenUserLogout_RemoveCookie()
