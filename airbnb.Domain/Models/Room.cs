@@ -15,5 +15,7 @@ namespace airbnb.Domain.Models
         public int Price { get; set; }
         public DateTime PublishedAt { get; set; }
         public List<Reservation> Reservations { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

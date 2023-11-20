@@ -1,7 +1,6 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
-using airbnb.Domain.Models;
-using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace airbnb.API.Controllers
@@ -11,26 +10,27 @@ namespace airbnb.API.Controllers
     public class RoomsController : ControllerBase
     {
         private readonly IRoomService _roomService;
-        private readonly IMapper _mapper;
-        public RoomsController(IRoomService roomService, IMapper mapper)
+        public RoomsController(IRoomService roomService)
         {
             _roomService = roomService;
-            _mapper = mapper;
         }
-        [HttpPost("Create")]
+
+        [HttpPost("Create"), Authorize]
         public async Task<ActionResult<CreateRoomOfferResponse>> CreateRoomOffer(CreateRoomOfferRequest roomOffer)
         {
             try
             {
                 var result = await _roomService.CreateOffer(roomOffer);
-                var response = _mapper.Map<CreateRoomOfferResponse>(result);
-                return Ok(response);
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Internal Server Error");
+                return BadRequest($"An error occurred while processing the room offer: {ex.Message}");
             }
         }
+
+
+
 
 
 

@@ -148,7 +148,7 @@ namespace airbnb.Infrastructure.Migrations
                     b.Property<int>("TotalOccupancy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -205,7 +205,7 @@ namespace airbnb.Infrastructure.Migrations
                     b.HasOne("airbnb.Domain.Models.User", "User")
                         .WithMany("Reservations")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Room");
@@ -227,13 +227,17 @@ namespace airbnb.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("airbnb.Domain.Models.User", null)
+                    b.HasOne("airbnb.Domain.Models.User", "User")
                         .WithMany("Rooms")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
 
                     b.Navigation("Amenities");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("airbnb.Domain.Models.Room", b =>

@@ -1,29 +1,36 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
-using airbnb.Domain.Models;
+using AutoMapper;
 
 namespace airbnb.Application.Services
 {
     public class RoomService : IRoomService
     {
         private readonly IRoomRepository _roomRepository;
-        public RoomService(IRoomRepository roomRepository)
+        private readonly IMapper _mapper;
+        public RoomService(IRoomRepository roomRepository, IMapper mapper)
         {
             _roomRepository = roomRepository;
+            _mapper = mapper;
         }
 
 
-        public async Task<Room> CreateOffer(CreateRoomOfferRequest offerRequest)
+        public async Task<CreateRoomOfferResponse> CreateOffer(CreateRoomOfferRequest offerRequest)
         {
             try
             {
                 var response = await _roomRepository.CreateOffer(offerRequest);
-                return response;
+
+                var mappedResponse = _mapper.Map<CreateRoomOfferResponse>(response);
+
+                return mappedResponse;
             }
             catch (Exception ex)
             {
-                throw new Exception("En error occured while trying to invoke repository", ex); 
+                Console.WriteLine(ex.ToString());
+                throw new Exception("An error occurred while processing the room offer. Please try again later.", ex);
             }
         }
+
     }
 }

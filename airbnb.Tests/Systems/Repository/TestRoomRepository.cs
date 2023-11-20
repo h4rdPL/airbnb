@@ -4,6 +4,8 @@ using airbnb.Domain.Models;
 using airbnb.Infrastructure.Rooms;
 using airbnb.Tests.Fixtures;
 using FluentAssertions;
+using Microsoft.AspNetCore.Http;
+using Moq;
 
 namespace airbnb.Tests.Systems.Repository
 {
@@ -13,12 +15,13 @@ namespace airbnb.Tests.Systems.Repository
         public async Task CreateOffer_WhenValidOfferProvided_ShouldAddToDatabase()
         {
             // Arrange
+            var mockHttpContext = new Mock<IHttpContextAccessor>();
             var testRoom = OfferFixture.CreateTestRoom();
             var createRoomOfferRequest = new CreateRoomOfferRequest
             {
                 HomeType = HomeType.House,
                 TotalBathrooms = 1,
-                TotalOcupancy = 1,
+                TotalOccupancy = 1,
                 TotalBedrooms = 1,
                 Summary = 3,
                 Address = new Address
@@ -41,7 +44,7 @@ namespace airbnb.Tests.Systems.Repository
             };
 
             using var dbContext = new AirbnbDatabaseFake().Context;
-            var mockRepository = new RoomRepository(dbContext); 
+            var mockRepository = new RoomRepository(dbContext, mockHttpContext.Object); 
 
             // Act
             var result = await mockRepository.CreateOffer(createRoomOfferRequest);

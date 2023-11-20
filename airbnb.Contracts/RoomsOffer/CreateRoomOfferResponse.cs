@@ -5,14 +5,15 @@ namespace airbnb.Contracts.RoomsOffer
 {
     public record struct CreateRoomOfferResponse(
         int Id,
+        int UserId,
         HomeType HomeType,
-        int TotalOcupancy,
-        int TotalBedroom,
+        int TotalOccupancy,
+        int TotalBedrooms,
         int TotalBathrooms,
         int Summary,
         Address Address,
         Amenities Amenities,
-        int Price, 
+        int Price,
         DateTime PublishedAt
-        );
+    );
 }

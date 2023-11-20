@@ -3,11 +3,6 @@ using airbnb.Application.Services;
 using airbnb.Contracts.Authentication;
 using airbnb.Contracts.Authentication.LoginResponse;
 using airbnb.Domain.Models;
-using airbnb.Tests.Fixtures;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Moq;
 namespace airbnb.Tests.Systems.Services
 {

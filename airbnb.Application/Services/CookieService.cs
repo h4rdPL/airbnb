@@ -29,30 +29,32 @@ namespace airbnb.Application.Services
             try
             {
                 var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.FirstName),
-                new Claim(ClaimTypes.Email, user.Email),
-            };
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.FirstName),
+                    new Claim(ClaimTypes.Email, user.Email),
+                };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 var authProperties = new AuthenticationProperties
                 {
                     AllowRefresh = true,
-                    ExpiresUtc = DateTimeOffset.UtcNow.ToLocalTime().AddMinutes(10),
+                    ExpiresUtc = DateTimeOffset.Now.AddDays(1),
                     IsPersistent = true,
                 };
 
                 await _httpContextAccessor.HttpContext.SignInAsync(
-                    "default",
+                     CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties);
-            } catch (Exception ex)
-            {
-                throw new Exception("Error while return cookie", ex);
             }
-      
+            catch (Exception ex)
+            {
+                throw new Exception("Error while returning cookie", ex);
+            }
         }
+
+
     }
 }

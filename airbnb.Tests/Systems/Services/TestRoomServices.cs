@@ -23,7 +23,7 @@ namespace airbnb.Tests.Systems.Services
             var createRoomOfferRequest = new CreateRoomOfferRequest
             {
                 HomeType = HomeType.House,
-                TotalOcupancy = 2,
+                TotalOccupancy = 2,
                 TotalBedrooms = 1,
                 TotalBathrooms = 1,
                 Summary = 300,
@@ -50,8 +50,8 @@ namespace airbnb.Tests.Systems.Services
             {
                 Id = 1,
                 HomeType = HomeType.Apartment,
-                TotalOcupancy = 2,
-                TotalBedroom = 1,
+                TotalOccupancy = 2,
+                TotalBedrooms = 1,
                 TotalBathrooms = 1,
                 Summary = 0,
                 Address = new Address
@@ -76,7 +76,7 @@ namespace airbnb.Tests.Systems.Services
             mockMapper.Setup(mapper => mapper.Map<CreateRoomOfferResponse>(It.IsAny<Room>()))
                       .Returns(createRoomOfferResponse);
 
-            var sut = new RoomsController(mockService.Object, mockMapper.Object);
+            var sut = new RoomsController(mockService.Object);
 
             // Act
             var result = await sut.CreateRoomOffer(createRoomOfferRequest);
