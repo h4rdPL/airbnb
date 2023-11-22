@@ -19,7 +19,6 @@ namespace airbnb.Tests.Systems.Services
             var mockService = new Mock<IRoomService>();
             var mockMapper = new Mock<IMapper>();
 
-            // Przygotuj dane testowe
             var createRoomOfferRequest = new CreateRoomOfferRequest
             {
                 HomeType = HomeType.House,

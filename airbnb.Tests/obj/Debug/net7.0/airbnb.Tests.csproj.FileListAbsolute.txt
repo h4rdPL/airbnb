@@ -166,3 +166,6 @@ C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.Extensions.Iden
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\AutoMapper.dll
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

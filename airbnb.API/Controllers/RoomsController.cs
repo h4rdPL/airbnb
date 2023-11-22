@@ -1,5 +1,6 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
+using airbnb.Contracts.RoomsReservation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,10 +30,21 @@ namespace airbnb.API.Controllers
             }
         }
 
+        [HttpPost("CreateReservation"), Authorize]
+        public async Task<ActionResult<MakeReservationResponse>> MakeReservation(MakeReservationRequest reservationRequest)
+        {
+            try
+            {
+                var result = await _roomService.MakeReservation(reservationRequest);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"An error occurred while processing the room offer: {ex.Message}");
 
+            }
 
-
-
+        }
 
     }
 }

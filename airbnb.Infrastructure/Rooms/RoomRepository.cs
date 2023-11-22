@@ -1,5 +1,6 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
+using airbnb.Contracts.RoomsReservation;
 using airbnb.Domain.Models;
 using airbnb.Infrastructure.ApplicationDbContext;
 using Microsoft.AspNetCore.Http;
@@ -23,6 +24,7 @@ namespace airbnb.Infrastructure.Rooms
                 var myIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
                 var userId = int.Parse(myIdClaim);
                 Console.WriteLine(userId);
+
                 var newOffer = new Room
                 {
                     UserId = userId,
@@ -51,7 +53,7 @@ namespace airbnb.Infrastructure.Rooms
                 };
 
                 _context.Rooms.Add(newOffer);
-                await _context.SaveChangesAsync(); // Await the SaveChangesAsync method
+                await _context.SaveChangesAsync();
 
                 return new CreateRoomOfferResponse(newOffer.Id, newOffer.UserId, newOffer.HomeType, newOffer.TotalOccupancy, newOffer.TotalBedrooms, newOffer.TotalBathrooms, newOffer.Summary, newOffer.Address, newOffer.Amenities, newOffer.Price, newOffer.PublishedAt);
             }
@@ -61,5 +63,36 @@ namespace airbnb.Infrastructure.Rooms
                 throw new Exception("An error occurred while processing the room offer. Please try again later.", ex);
             }
         }
+
+        public async Task<MakeReservationResponse> MakeReservation(MakeReservationRequest newReservation)
+        {
+            try
+            {
+                var myIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+                var userId = int.Parse(myIdClaim);
+
+                var reservation = new Reservation
+                {
+                    UserId = userId,
+                    RoomId = newReservation.RoomId,
+                    StartDate = newReservation.StartDate,
+                    EndDate = newReservation.EndDate,
+                    FinalPrice = 400,
+                    ReservedGuests = newReservation.ReservedGuests
+                };
+
+                _context.Reservations.Add(reservation);
+                await _context.SaveChangesAsync();
+
+                return new MakeReservationResponse(userId, reservation.UserId, reservation.StartDate, reservation.EndDate, reservation.FinalPrice, reservation.ReservedGuests);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while making a reservation: {ex}");
+                throw;
+            }
+        }
+
+
     }
 }

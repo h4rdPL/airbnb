@@ -1,6 +1,7 @@
 using airbnb.Application;
 using airbnb.Infrastructure;
 using airbnb.Infrastructure.ApplicationDbContext;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 

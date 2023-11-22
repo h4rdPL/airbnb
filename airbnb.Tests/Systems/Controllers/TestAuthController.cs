@@ -1,10 +1,8 @@
 using airbnb.API.Controllers;
 using airbnb.Application.Common.Interfaces;
-using airbnb.Application.Services;
 using airbnb.Contracts.Authentication;
 using airbnb.Contracts.Authentication.LoginResponse;
 using airbnb.Domain.Models;
-using airbnb.Tests.Fixtures;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
