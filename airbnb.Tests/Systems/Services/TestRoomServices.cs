@@ -3,6 +3,7 @@ using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
 using airbnb.Domain.Enum;
 using airbnb.Domain.Models;
+using airbnb.Tests.Fixtures;
 using AutoMapper;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
@@ -19,58 +20,8 @@ namespace airbnb.Tests.Systems.Services
             var mockService = new Mock<IRoomService>();
             var mockMapper = new Mock<IMapper>();
 
-            var createRoomOfferRequest = new CreateRoomOfferRequest
-            {
-                HomeType = HomeType.House,
-                TotalOccupancy = 2,
-                TotalBedrooms = 1,
-                TotalBathrooms = 1,
-                Summary = 300,
-                Address = new Address
-                {
-                    ZIPCode = "12345",
-                    City = "Example City",
-                    Street = "Main Street",
-                    ApartmentNumber = 101
-                },
-                Amenities = new Amenities
-                {
-                    HasTV = true,
-                    HasKitchen = true,
-                    HasHeating = true,
-                    HasInternet = true,
-                    HasAirCon = true
-                },
-                Price = 100,
-                PublishedAt = DateTime.UtcNow
-            };
-
-            var createRoomOfferResponse = new CreateRoomOfferResponse
-            {
-                Id = 1,
-                HomeType = HomeType.Apartment,
-                TotalOccupancy = 2,
-                TotalBedrooms = 1,
-                TotalBathrooms = 1,
-                Summary = 0,
-                Address = new Address
-                {
-                    ZIPCode = "12345",
-                    City = "Example City",
-                    Street = "Main Street",
-                    ApartmentNumber = 101
-                },
-                Amenities = new Amenities
-                {
-                    HasTV = true,
-                    HasKitchen = true,
-                    HasHeating = true,
-                    HasInternet = true,
-                    HasAirCon = true
-                },
-                Price = 100,
-                PublishedAt = DateTime.UtcNow,
-            };
+            var createRoomOfferRequest = RoomFixture.CreateRoomRequestFixture();
+            var createRoomOfferResponse = RoomFixture.CreateRoomResponseFixture();
 
             mockMapper.Setup(mapper => mapper.Map<CreateRoomOfferResponse>(It.IsAny<Room>()))
                       .Returns(createRoomOfferResponse);

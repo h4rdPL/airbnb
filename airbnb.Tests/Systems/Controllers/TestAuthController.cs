@@ -2,6 +2,7 @@ using airbnb.API.Controllers;
 using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.Authentication;
 using airbnb.Contracts.Authentication.LoginResponse;
+using airbnb.Contracts.RoomsOffer;
 using airbnb.Domain.Models;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
@@ -30,8 +31,11 @@ public class TestAuthController
         var result = await sut.Register(registerRequest);
 
         // Assert
-        result.Should().BeOfType<OkObjectResult>();  
-        result.As<OkObjectResult>().StatusCode.Should().Be(200);  
+        var objectResult = (ActionResult<AuthResponse>)result;
+        objectResult.Result.Should().BeOfType<OkObjectResult>();
+        var okObjectResult = (OkObjectResult)objectResult.Result;
+        okObjectResult.StatusCode.Should().Be(200);
+        okObjectResult.Value.Should().BeOfType<AuthResponse>();
     }
 
 
@@ -79,9 +83,11 @@ public class TestAuthController
 
         // Assert
         result.Should().BeOfType<ActionResult<AuthResponse>>();
-
-        var objectResult = (ActionResult<AuthResponse>)result;
-        var user = objectResult.Value.Should().BeAssignableTo<User>().Subject;
+        var objectResult =  (ActionResult<AuthResponse>)result; 
+        objectResult.Result.Should().BeOfType<OkObjectResult>();
+        var okObjectResult = (OkObjectResult)objectResult.Result;
+        okObjectResult.StatusCode.Should().Be(200);
+        okObjectResult.Value.Should().BeOfType<AuthResponse>();
     }
 
 

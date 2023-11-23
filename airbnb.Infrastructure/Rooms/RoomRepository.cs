@@ -22,8 +22,15 @@ namespace airbnb.Infrastructure.Rooms
             try
             {
                 var myIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+                if (myIdClaim == null)
+                {
+                    Console.WriteLine("Nie znaleziono Claima o typie NameIdentifier.");
+                    throw new Exception("Missing NameIdentifier claim.");
+                }
+
                 var userId = int.Parse(myIdClaim);
                 Console.WriteLine(userId);
+
 
                 var newOffer = new Room
                 {

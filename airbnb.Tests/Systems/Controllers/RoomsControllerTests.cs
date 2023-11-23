@@ -25,15 +25,6 @@ namespace airbnb.Tests.Systems.Controllers
                 ReservedGuests = 5,
             };
 
-            var expectedResponse = new MakeReservationResponse
-            {
-                ReservationId = 1,
-                RoomId = makeReservationRequest.RoomId,
-                StartDate = makeReservationRequest.StartDate,
-                EndDate = makeReservationRequest.EndDate,
-                FinalPrice = 100,
-                ReservedGuests = makeReservationRequest.ReservedGuests
-            };
 
             // Act 
             var result = await roomsController.MakeReservation(makeReservationRequest);

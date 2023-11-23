@@ -15,7 +15,12 @@ namespace airbnb.Application.Services
             _mapper = mapper;
         }
 
-
+        /// <summary>
+        /// Create room for user
+        /// </summary>
+        /// <param name="offerRequest">Roon offer request</param>
+        /// <returns>Room Response</returns>
+        /// <exception cref="Exception"></exception>
         public async Task<CreateRoomOfferResponse> CreateOffer(CreateRoomOfferRequest offerRequest)
         {
             try
@@ -32,7 +37,12 @@ namespace airbnb.Application.Services
                 throw new Exception("An error occurred while processing the room offer. Please try again later.", ex);
             }
         }
-
+        /// <summary>
+        /// Nake Room reservation
+        /// </summary>
+        /// <param name="reservationRequest"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<MakeReservationResponse> MakeReservation(MakeReservationRequest reservationRequest)
         {
             try
