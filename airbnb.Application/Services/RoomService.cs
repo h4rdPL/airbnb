@@ -14,6 +14,17 @@ namespace airbnb.Application.Services
             _roomRepository = roomRepository;
             _mapper = mapper;
         }
+        /// <summary>
+        /// Cancel reservation service
+        /// </summary>
+        /// <param name="reservationId"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<bool> CancelReservation(int reservationId)
+        {
+            var result = await _roomRepository.CancelReservation(reservationId);
+            return result;
+        }
 
         /// <summary>
         /// Create room for user

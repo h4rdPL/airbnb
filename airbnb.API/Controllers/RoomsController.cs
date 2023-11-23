@@ -41,9 +41,21 @@ namespace airbnb.API.Controllers
             catch (Exception ex)
             {
                 return BadRequest($"An error occurred while processing the room offer: {ex.Message}");
-
             }
+        }
 
+        [HttpPost("CancelReservation"), Authorize]
+        public async Task<ActionResult<bool>> CancelReservation(int reservationId)
+        {
+            try
+            {
+                var result = await _roomService.CancelReservation(reservationId);
+                return Ok(result);
+
+            } catch (Exception ex)
+            {
+                throw new Exception("En error occured when trying to invoke services", ex);
+            }
         }
 
     }

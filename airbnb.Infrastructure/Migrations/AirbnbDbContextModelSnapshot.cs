@@ -92,6 +92,9 @@ namespace airbnb.Infrastructure.Migrations
                     b.Property<int>("FinalPrice")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsCancelled")
+                        .HasColumnType("bit");
+
                     b.Property<int>("ReservedGuests")
                         .HasColumnType("int");
 

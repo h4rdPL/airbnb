@@ -8,5 +8,9 @@ namespace airbnb.Application.Common.Interfaces
     {
         Task<CreateRoomOfferResponse> CreateOffer(CreateRoomOfferRequest offer);
         Task<MakeReservationResponse> MakeReservation(MakeReservationRequest newReservation);
+        Task<Room> GetRoomById(int id);
+        int CalculateStayDuration(DateTime startDate, DateTime endDate);
+        Task<bool> CancelReservation(int reservationId);
+
     }
 }

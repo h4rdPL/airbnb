@@ -11,5 +11,6 @@
         public DateTime EndDate { get; set; }
         public int FinalPrice { get; set; }
         public int ReservedGuests { get; set; }
+        public bool IsCancelled { get; set; }
     }
 }
