@@ -11,29 +11,41 @@ public class AirbnbDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Room> Rooms { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
+    public DbSet<Comment> Comments { get; set; }
+    public DbSet<RoomComment> RoomComments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Define the relationship between User and Room
         modelBuilder.Entity<User>()
             .HasMany(u => u.Rooms)
             .WithOne(r => r.User)
             .HasForeignKey(r => r.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Define the relationship between Room and Reservation
         modelBuilder.Entity<Room>()
             .HasMany(r => r.Reservations)
             .WithOne(re => re.Room)
             .HasForeignKey(re => re.RoomId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Define the relationship between User and Reservation without cascading delete
         modelBuilder.Entity<Reservation>()
             .HasOne(re => re.User)
             .WithMany(u => u.Reservations)
             .HasForeignKey(re => re.UserId)
-            .OnDelete(DeleteBehavior.Restrict); // or .OnDelete(DeleteBehavior.NoAction)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<Comment>()
+            .HasOne(c => c.User)
+            .WithMany(u => u.Comments)
+            .HasForeignKey(c => c.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<RoomComment>()
+            .HasOne(rc => rc.Comment)
+            .WithMany(c => c.RoomComments)
+            .HasForeignKey(rc => rc.CommentId)
+            .OnDelete(DeleteBehavior.NoAction); 
 
     }
+
 }

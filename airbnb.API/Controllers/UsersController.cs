@@ -52,5 +52,17 @@ namespace airbnb.API.Controllers
             }
             
         }
+
+        public async Task<ActionResult<CreateCommentResponse>> CreateComment(CreateCommentsRequest postNewComment)
+        {
+            try
+            {
+                var result = await _userService.CreateComment(postNewComment);
+                return Ok(result);
+            } catch (Exception ex)
+            {
+                throw new Exception("En error occured while invoke service", ex);
+            }
+        }
     }
 }

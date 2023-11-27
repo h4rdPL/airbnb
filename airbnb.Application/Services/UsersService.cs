@@ -18,6 +18,12 @@ namespace airbnb.Application.Services
             _passwordHasher = passwordHasher;
         }
 
+        public async Task<CreateCommentResponse> CreateComment(CreateCommentsRequest postNewComment)
+        {
+            var result = await _userRepository.CreateComment(postNewComment);
+            return result;
+        }
+
         public async Task<User> GetUserByEmail(string email)
         {
             var result = await _userRepository.GetUserByEmail(email);
@@ -44,8 +50,6 @@ namespace airbnb.Application.Services
                 throw new Exception("Error while setting user Cookie", ex);
             }
         }
-
-
 
         public async Task<AuthResponse> Register(AuthenticationRequest authenticationRegister)
         {

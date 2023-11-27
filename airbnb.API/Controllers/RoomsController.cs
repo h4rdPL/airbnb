@@ -1,4 +1,5 @@
 ﻿using airbnb.Application.Common.Interfaces;
+using airbnb.Contracts.Authentication;
 using airbnb.Contracts.RoomsOffer;
 using airbnb.Contracts.RoomsReservation;
 using airbnb.Domain.Models;

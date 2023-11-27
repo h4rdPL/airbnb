@@ -1,6 +1,5 @@
 ﻿using airbnb.Contracts.RoomsOffer;
 using airbnb.Contracts.RoomsReservation;
-using airbnb.Domain.Models;
 
 namespace airbnb.Application.Common.Interfaces
 {

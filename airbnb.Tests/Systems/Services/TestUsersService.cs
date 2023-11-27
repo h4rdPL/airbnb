@@ -37,6 +37,7 @@ namespace airbnb.Tests.Systems.Services
                 mockRepository.Verify(repo => repo.AddUser(It.IsAny<User>()), Times.Once);
             }
         }
-    }
+
+     }
 
 }

@@ -1,4 +1,5 @@
 ﻿using airbnb.Application.Common.Interfaces;
+using airbnb.Contracts.Authentication;
 using airbnb.Domain.Models;
 using airbnb.Infrastructure.ApplicationDbContext;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,6 @@ namespace airbnb.Infrastructure.Persistence
         public UserRepository(AirbnbDbContext context)
         {
             _context = context;
-
         }
 
         /// <summary>
@@ -24,6 +24,11 @@ namespace airbnb.Infrastructure.Persistence
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+        }
+
+        public Task<CreateCommentResponse> CreateComment(CreateCommentsRequest postNewComment)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<User> GetUserByEmail(string email)

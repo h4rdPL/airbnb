@@ -12,8 +12,8 @@ using airbnb.Infrastructure.ApplicationDbContext;
 namespace airbnb.Infrastructure.Migrations
 {
     [DbContext(typeof(AirbnbDbContext))]
-    [Migration("20231119212058_initialMigration")]
-    partial class initialMigration
+    [Migration("20231127135956_AddRoomCommentsRelations")]
+    partial class AddRoomCommentsRelations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,6 +81,34 @@ namespace airbnb.Infrastructure.Migrations
                     b.ToTable("Amenities");
                 });
 
+            modelBuilder.Entity("airbnb.Domain.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("NumberOfStars")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserFirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("airbnb.Domain.Models.Reservation", b =>
                 {
                     b.Property<int>("Id")
@@ -94,6 +122,9 @@ namespace airbnb.Infrastructure.Migrations
 
                     b.Property<int>("FinalPrice")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsCancelled")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ReservedGuests")
                         .HasColumnType("int");
@@ -165,6 +196,29 @@ namespace airbnb.Infrastructure.Migrations
                     b.ToTable("Rooms");
                 });
 
+            modelBuilder.Entity("airbnb.Domain.Models.RoomComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CommentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("RoomComments");
+                });
+
             modelBuilder.Entity("airbnb.Domain.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -195,6 +249,17 @@ namespace airbnb.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("airbnb.Domain.Models.Comment", b =>
+                {
+                    b.HasOne("airbnb.Domain.Models.User", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("airbnb.Domain.Models.Reservation", b =>
@@ -243,13 +308,41 @@ namespace airbnb.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("airbnb.Domain.Models.RoomComment", b =>
+                {
+                    b.HasOne("airbnb.Domain.Models.Comment", "Comment")
+                        .WithMany("RoomComments")
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("airbnb.Domain.Models.Room", "Room")
+                        .WithMany("RoomComments")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Comment");
+
+                    b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("airbnb.Domain.Models.Comment", b =>
+                {
+                    b.Navigation("RoomComments");
+                });
+
             modelBuilder.Entity("airbnb.Domain.Models.Room", b =>
                 {
                     b.Navigation("Reservations");
+
+                    b.Navigation("RoomComments");
                 });
 
             modelBuilder.Entity("airbnb.Domain.Models.User", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Reservations");
 
                     b.Navigation("Rooms");

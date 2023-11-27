@@ -17,5 +17,6 @@ namespace airbnb.Domain.Models
         public List<Reservation> Reservations { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
+        public List<RoomComment> RoomComments { get; set; }
     }
 }

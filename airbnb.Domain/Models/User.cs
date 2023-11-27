@@ -10,5 +10,6 @@
         public string? RepeatedPassword { get; set; }
         public List<Room> Rooms { get; set; }
         public List<Reservation> Reservations { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }
