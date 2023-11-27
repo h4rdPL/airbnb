@@ -1,6 +1,7 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
 using airbnb.Contracts.RoomsReservation;
+using airbnb.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -57,6 +58,17 @@ namespace airbnb.API.Controllers
                 throw new Exception("En error occured when trying to invoke services", ex);
             }
         }
-
+        [HttpGet("GetAllRooms")]
+        public async Task<ActionResult<List<ListOfRoomsResponse>>> GetAllRooms()
+        {
+            try
+            {
+                var result = await _roomService.GetAllRooms();
+                return Ok(result);
+            } catch (Exception ex)
+            {
+                throw new Exception("En Error occured while invoke service", ex);
+            }
+        }
     }
 }

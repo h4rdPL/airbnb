@@ -117,6 +117,36 @@ namespace airbnb.Infrastructure.Rooms
             }
         }
 
+        public async Task<List<ListOfRoomsResponse>> GetAllRoms()
+        {
+            try
+            {
+                var result = await _context.Rooms
+                    .Include(r => r.Address)
+                    .Include(r => r.Amenities)
+                    .ToListAsync();
+
+                var listOfRoomsResponse = result.Select(room => new ListOfRoomsResponse(
+                    room.HomeType,
+                    room.TotalOccupancy,
+                    room.TotalBedrooms,
+                    room.TotalBathrooms,
+                    room.Summary,
+                    room.Address,
+                    room.Amenities,
+                    room.Price,
+                    room.PublishedAt
+                )).ToList();
+
+                return listOfRoomsResponse;
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+                throw new Exception("An error occurred while returning the list of rooms.", ex);
+            }
+        }
+
         /// <summary>
         /// Get single room by id
         /// </summary>

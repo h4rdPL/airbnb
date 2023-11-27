@@ -169,3 +169,4 @@ C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\AutoMapper.Extensions.Mic
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\_programowanie\airbnb\airbnb.Tests\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+C:\_programowanie\airbnb\airbnb.Tests\obj\Debug\net7.0\airbnb.Tests.sourcelink.json

@@ -1,7 +1,6 @@
 C:\_programowanie\airbnb\airbnb.Domain\bin\Debug\net7.0\airbnb.Domain.deps.json
 C:\_programowanie\airbnb\airbnb.Domain\bin\Debug\net7.0\airbnb.Domain.dll
 C:\_programowanie\airbnb\airbnb.Domain\bin\Debug\net7.0\airbnb.Domain.pdb
-C:\_programowanie\airbnb\airbnb.Domain\obj\Debug\net7.0\airbnb.Domain.csproj.AssemblyReference.cache
 C:\_programowanie\airbnb\airbnb.Domain\obj\Debug\net7.0\airbnb.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\_programowanie\airbnb\airbnb.Domain\obj\Debug\net7.0\airbnb.Domain.AssemblyInfoInputs.cache
 C:\_programowanie\airbnb\airbnb.Domain\obj\Debug\net7.0\airbnb.Domain.AssemblyInfo.cs
@@ -10,3 +9,4 @@ C:\_programowanie\airbnb\airbnb.Domain\obj\Debug\net7.0\airbnb.Domain.dll
 C:\_programowanie\airbnb\airbnb.Domain\obj\Debug\net7.0\refint\airbnb.Domain.dll
 C:\_programowanie\airbnb\airbnb.Domain\obj\Debug\net7.0\airbnb.Domain.pdb
 C:\_programowanie\airbnb\airbnb.Domain\obj\Debug\net7.0\ref\airbnb.Domain.dll
+C:\_programowanie\airbnb\airbnb.Domain\obj\Debug\net7.0\airbnb.Domain.sourcelink.json

@@ -48,6 +48,24 @@ namespace airbnb.Application.Services
                 throw new Exception("An error occurred while processing the room offer. Please try again later.", ex);
             }
         }
+
+        /// <summary>
+        /// Get List of all rooms
+        /// </summary>
+        /// <returns>List<Room></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<List<ListOfRoomsResponse>> GetAllRooms()
+        {
+            try
+            {
+                var result = await _roomRepository.GetAllRoms();
+                return result;
+            } catch (Exception ex)
+            {
+                throw new Exception("En error occured while invoke repository", ex);
+            }  
+        }
+
         /// <summary>
         /// Nake Room reservation
         /// </summary>

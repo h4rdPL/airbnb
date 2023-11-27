@@ -15,3 +15,4 @@ C:\_programowanie\airbnb\airbnb.Application\bin\Debug\net7.0\airbnb.Domain.pdb
 C:\_programowanie\airbnb\airbnb.Application\obj\Debug\net7.0\airbnb.Application.csproj.CopyComplete
 C:\_programowanie\airbnb\airbnb.Application\bin\Debug\net7.0\airbnb.Contracts.dll
 C:\_programowanie\airbnb\airbnb.Application\bin\Debug\net7.0\airbnb.Contracts.pdb
+C:\_programowanie\airbnb\airbnb.Application\obj\Debug\net7.0\airbnb.Application.sourcelink.json

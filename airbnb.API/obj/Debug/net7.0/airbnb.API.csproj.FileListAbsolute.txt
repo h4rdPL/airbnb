@@ -88,3 +88,4 @@ C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPa
 C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\_programowanie\airbnb\airbnb.API\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+C:\_programowanie\airbnb\airbnb.API\obj\Debug\net7.0\airbnb.API.sourcelink.json

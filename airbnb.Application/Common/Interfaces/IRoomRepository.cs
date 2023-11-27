@@ -11,6 +11,6 @@ namespace airbnb.Application.Common.Interfaces
         Task<Room> GetRoomById(int id);
         int CalculateStayDuration(DateTime startDate, DateTime endDate);
         Task<bool> CancelReservation(int reservationId);
-
+        Task<List<ListOfRoomsResponse>> GetAllRoms();
     }
 }

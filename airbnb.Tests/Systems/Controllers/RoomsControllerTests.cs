@@ -2,6 +2,7 @@
 using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
 using airbnb.Contracts.RoomsReservation;
+using airbnb.Domain.Models;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -36,6 +37,27 @@ namespace airbnb.Tests.Systems.Controllers
             var okObjectResult = (OkObjectResult)objectResult.Result;
             okObjectResult.StatusCode.Should().Be(200);
             okObjectResult.Value.Should().BeOfType<MakeReservationResponse>();
+
+        }
+        [Fact]
+        public async Task WhenGetAllReservations_Returns200()
+        {
+            // Arrange 
+            var roomServiceMock = new Mock<IRoomService>();
+            var roomsController = new RoomsController(roomServiceMock.Object);
+
+
+            // Act 
+            var result = await roomsController.GetAllRooms();
+
+            // Assert
+
+
+            result.Should().BeOfType<ActionResult<List<ListOfRoomsResponse>>>();
+            var objectResult = (ActionResult<List<ListOfRoomsResponse>>)result;
+            objectResult.Result.Should().BeOfType<OkObjectResult>();
+            var okObjectResult = (OkObjectResult)objectResult.Result;
+            okObjectResult.StatusCode.Should().Be(200);
 
         }
     }
