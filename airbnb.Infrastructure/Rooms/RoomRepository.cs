@@ -117,6 +117,11 @@ namespace airbnb.Infrastructure.Rooms
             }
         }
 
+        /// <summary>
+        /// Get all room method
+        /// </summary>
+        /// <returns>List of all rooms from the database</returns>
+        /// <exception cref="Exception"></exception>
         public async Task<List<ListOfRoomsResponse>> GetAllRoms()
         {
             try

@@ -5,6 +5,7 @@ using airbnb.Tests.Fixtures;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Moq;
+using System.Security.Claims;
 
 namespace airbnb.Tests.Systems.Repository
 {
@@ -15,9 +16,18 @@ namespace airbnb.Tests.Systems.Repository
         {
             // Arrange
             var mockHttpContext = new Mock<IHttpContextAccessor>();
+
+            // Set up the HttpContext for the mock
+            mockHttpContext.Setup(x => x.HttpContext).Returns(new DefaultHttpContext
+            {
+                User = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, "1")                                   
+                }))
+            });
+
             var createRoomOfferRequest = RoomFixture.CreateRoomRequestFixture();
             var createUser = UserFixture.CreateTestUser();
-
 
             using var dbContext = new AirbnbDatabaseFake().Context;
             var mockRepository = new RoomRepository(dbContext, mockHttpContext.Object);
@@ -32,6 +42,7 @@ namespace airbnb.Tests.Systems.Repository
             savedOffer.Should().BeOfType<Room>();
         }
 
-  
+
+
     }
 }

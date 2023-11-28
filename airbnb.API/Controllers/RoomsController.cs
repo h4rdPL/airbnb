@@ -59,6 +59,7 @@ namespace airbnb.API.Controllers
                 throw new Exception("En error occured when trying to invoke services", ex);
             }
         }
+      
         [HttpGet("GetAllRooms")]
         public async Task<ActionResult<List<ListOfRoomsResponse>>> GetAllRooms()
         {

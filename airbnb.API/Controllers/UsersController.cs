@@ -53,6 +53,7 @@ namespace airbnb.API.Controllers
             
         }
 
+        [HttpPost("comment")]
         public async Task<ActionResult<CreateCommentResponse>> CreateComment(CreateCommentsRequest postNewComment)
         {
             try

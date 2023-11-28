@@ -1,7 +1,9 @@
 ﻿using airbnb.API.Controllers;
 using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.Authentication;
+using airbnb.Domain.Models;
 using FluentAssertions;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 
 namespace airbnb.Tests.Systems.Controllers
@@ -27,8 +29,11 @@ namespace airbnb.Tests.Systems.Controllers
             var result = await usersController.CreateComment(postNewComment);
 
             // Assert
-
             result.Should().NotBeNull();
+
+            result.Should().BeOfType<ActionResult<CreateCommentResponse>>().Which.Value.Should().BeOfType<CreateCommentResponse>();
         }
+
+
     }
 }
