@@ -5,6 +5,12 @@ namespace airbnb.Application.Services
 {
     public class EmailService : IEmailService
     {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public async Task<bool> IsValidEmail(string email)
         {
             const string emailPattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";

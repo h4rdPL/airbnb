@@ -22,8 +22,8 @@ namespace airbnb.Infrastructure.Rooms
         /// <summary>
         /// Calculate how many day guests will stay
         /// </summary>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
+        /// <param name="startDate">Date in which customer will checkout at the room</param>
+        /// <param name="endDate">Date in which customer will go back from the room</param>
         /// <returns></returns>
         public int CalculateStayDuration(DateTime startDate, DateTime endDate)
         {
@@ -31,7 +31,6 @@ namespace airbnb.Infrastructure.Rooms
             Console.WriteLine(stayDuration.ToString());
             return stayDuration.Days;
         }
-
 
         /// <summary>
         /// Cancel reservation
@@ -60,11 +59,11 @@ namespace airbnb.Infrastructure.Rooms
         }
 
         /// <summary>
-        /// Create Room
+        /// Create Room and add to the database
         /// </summary>
-        /// <param name="offer">Room offer</param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <param name="offer">New room offer</param>
+        /// <returns>Room offer request</returns>
+        /// <exception cref="Exception">Cookies exception</exception>
         public async Task<CreateRoomOfferResponse> CreateOffer(CreateRoomOfferRequest offer)
         {
             try
@@ -76,7 +75,6 @@ namespace airbnb.Infrastructure.Rooms
                 }
 
                 var userId = int.Parse(myIdClaim);
-
 
                 var newOffer = new Room
                 {
@@ -155,7 +153,7 @@ namespace airbnb.Infrastructure.Rooms
         /// <summary>
         /// Get single room by id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Individual room id</param>
         /// <returns></returns>
         public async Task<Room> GetRoomById(int id)
         {
@@ -164,10 +162,10 @@ namespace airbnb.Infrastructure.Rooms
         }
 
         /// <summary>
-        /// Create Reservation
+        /// Method which create room reservation for logged user
         /// </summary>
         /// <param name="newReservation">Room reservation</param>
-        /// <returns></returns>
+        /// <returns>Reservation response</returns>
         public async Task<MakeReservationResponse> MakeReservation(MakeReservationRequest newReservation)
         {
             try
@@ -204,9 +202,6 @@ namespace airbnb.Infrastructure.Rooms
                 Console.WriteLine($"An error occurred while making a reservation: {ex}");
                 throw;
             }
-        }
-
-
-           
+        }   
     }
 }

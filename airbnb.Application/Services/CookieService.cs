@@ -15,6 +15,10 @@ namespace airbnb.Application.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task OnGetAsync()
         {
             await AuthenticationHttpContextExtensions.SignOutAsync(
@@ -23,7 +27,12 @@ namespace airbnb.Application.Services
             );
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task SetUserCookie(User user)
         {
             try
@@ -54,7 +63,5 @@ namespace airbnb.Application.Services
                 throw new Exception("Error while returning cookie", ex);
             }
         }
-
-
     }
 }

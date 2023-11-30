@@ -17,7 +17,11 @@ namespace airbnb.API.Controllers
         {
             _roomService = roomService;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roomOffer"></param>
+        /// <returns></returns>
         [HttpPost("Create"), Authorize]
         public async Task<ActionResult<CreateRoomOfferResponse>> CreateRoomOffer(CreateRoomOfferRequest roomOffer)
         {
@@ -32,6 +36,11 @@ namespace airbnb.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reservationRequest"></param>
+        /// <returns></returns>
         [HttpPost("CreateReservation"), Authorize]
         public async Task<ActionResult<MakeReservationResponse>> MakeReservation(MakeReservationRequest reservationRequest)
         {
@@ -46,6 +55,12 @@ namespace airbnb.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reservationId"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         [HttpPost("CancelReservation"), Authorize]
         public async Task<ActionResult<bool>> CancelReservation(int reservationId)
         {
@@ -59,7 +74,12 @@ namespace airbnb.API.Controllers
                 throw new Exception("En error occured when trying to invoke services", ex);
             }
         }
-      
+   
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         [HttpGet("GetAllRooms")]
         public async Task<ActionResult<List<ListOfRoomsResponse>>> GetAllRooms()
         {

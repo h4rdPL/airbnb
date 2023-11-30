@@ -14,6 +14,11 @@ namespace airbnb.Application.Services
         public byte[] Salt { get; private set; }
         public byte[] Hash { get; private set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public string HashPassword(string password)
         {
             Salt = RandomNumberGenerator.GetBytes(SaltSize);
@@ -22,13 +27,18 @@ namespace airbnb.Application.Services
             return string.Join(Delimiter, Convert.ToBase64String(Salt), Convert.ToBase64String(Hash));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="passwordHash"></param>
+        /// <param name="userPassword"></param>
+        /// <returns></returns>
         public bool VerifyPassword(string passwordHash, string userPassword)
         {
             var element = passwordHash.Split(Delimiter);
             var salt = Convert.FromBase64String(element[0]);
             var hash = Convert.FromBase64String(element[1]);
 
-            Console.WriteLine(salt + " " + hash);
             var hashInput = Rfc2898DeriveBytes.Pbkdf2(userPassword, salt, Iteration, _hashAlgorithmName, KeySize);
 
             return CryptographicOperations.FixedTimeEquals(hash, hashInput);

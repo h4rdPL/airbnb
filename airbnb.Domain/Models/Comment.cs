@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string UserFirstName { get; set; }
+        public string CommentValue { get; set; }
         public int NumberOfStars { get; set; }
         public DateTime CreatedAt { get; set; }
         public User User { get; set; }
