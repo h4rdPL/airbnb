@@ -89,6 +89,22 @@ namespace airbnb.Application.Services
             }
         }
 
-
+        /// <summary>
+        /// Invoke repository
+        /// </summary>
+        /// <param name="roomId">single room id</param>
+        /// <returns>true or false</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<bool> RemoveRoomById(int roomId)
+        {
+            try
+            {
+                var response = await _roomRepository.Remove(roomId);
+                return response;
+            } catch (Exception ex)
+            {
+                throw new Exception("An error occured while tru to invoke the repository", ex);
+            }
+        }
     }
 }

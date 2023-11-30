@@ -9,5 +9,6 @@ namespace airbnb.Application.Common.Interfaces
         Task<CreateRoomOfferResponse> CreateOffer(CreateRoomOfferRequest offerRequest);
         Task<List<ListOfRoomsResponse>> GetAllRooms();
         Task<MakeReservationResponse> MakeReservation(MakeReservationRequest reservationRequest);
+        Task<bool> RemoveRoomById(int roomId);
     }
 }

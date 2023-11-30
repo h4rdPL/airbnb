@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qcPRn1h8hWQpaJZcy3j2fhySesimdj1bcFeig/55wJ7QTRH9OYIcxMkct9br5JqeWcg0B3+kpP+bKZgzJm8dtQ==",
+  "dgSpecHash": "W+uVdgSkd5Jzo3gmgmf7RRsX0HmAGTRd+oLa9rLUfezbuNtWnfbdQJAn56wlE6Oxh5Cb0ILp2zRsZLneHsSsOw==",
   "success": true,
-  "projectFilePath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj",
+  "projectFilePath": "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O6KbuaIgu7Y5DybCkZGUdGG69nT58A0b2wUTIh3k1fuHrNLh70BOOspMw1FXxIwI93owc9N1txw51IxTeDiMWQ==",
+  "dgSpecHash": "UiAAly84IdZpGYJqrWWx/5H0qHvvYLelvthrpc+GgBFqrYwfVyiQm1gxNcVofhGj8w/AegcCh1zheHlQV8XtFw==",
   "success": true,
-  "projectFilePath": "C:\\_programowanie\\airbnb\\airbnb.API\\airbnb.API.csproj",
+  "projectFilePath": "C:\\_programowanie\\dotNET\\airbnb\\airbnb.API\\airbnb.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mateu\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

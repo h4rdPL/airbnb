@@ -3,6 +3,7 @@ using airbnb.Application.Services;
 using airbnb.Contracts.Authentication;
 using airbnb.Contracts.Authentication.LoginResponse;
 using airbnb.Domain.Models;
+using AutoMapper;
 using Moq;
 namespace airbnb.Tests.Systems.Services
 {
@@ -18,6 +19,7 @@ namespace airbnb.Tests.Systems.Services
             var mockRepository = new Mock<IUserRepository>();
             var mockCookieService = new Mock<ICookieService>();
             var mockPasswordService = new Mock<IPasswordHasherService>();
+            var mockMapper = new Mock<IMapper>();
             var registerRequest = new AuthenticationRequest("John", "Doe", "john.doe@gmail.com", Password, RepeatedPassword);
             var authResponse = new AuthResponse("John", "Doe", "john.deo@gmail.com");
             
@@ -25,7 +27,7 @@ namespace airbnb.Tests.Systems.Services
                 .Setup(service => service.Register(registerRequest))
                 .ReturnsAsync(authResponse);
 
-            var userService = new UsersService(mockRepository.Object, mockCookieService.Object, mockPasswordService.Object);
+            var userService = new UsersService(mockRepository.Object, mockCookieService.Object, mockPasswordService.Object, mockMapper.Object);
 
             // Act
             var result = await userService.Register(registerRequest);

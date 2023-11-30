@@ -2,6 +2,7 @@
 using airbnb.Application.Services;
 using airbnb.Contracts.Authentication;
 using airbnb.Tests.Fixtures;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
@@ -20,7 +21,8 @@ namespace airbnb.Tests.Systems.Services
             var mockUserRepository = new Mock<IUserRepository>();
             var mockCookieService = new Mock<ICookieService>();
             var mockPasswordService = new Mock<IPasswordHasherService>();
-            var userService = new UsersService(mockUserRepository.Object, mockCookieService.Object, mockPasswordService.Object);
+            var mockMapper = new Mock<IMapper>();
+            var userService = new UsersService(mockUserRepository.Object, mockCookieService.Object, mockPasswordService.Object, mockMapper.Object);
 
             var user = UserFixture.CreateTestUser();
             var loginRequest = new LoginRequest(email, password) ; 

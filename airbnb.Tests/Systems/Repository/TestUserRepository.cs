@@ -2,6 +2,7 @@
 using airbnb.Infrastructure.Persistence;
 using airbnb.Tests.Fixtures;
 using FluentAssertions;
+using Microsoft.AspNetCore.Http;
 using Moq;
 
 namespace airbnb.Tests.Systems.Repository
@@ -13,9 +14,10 @@ namespace airbnb.Tests.Systems.Repository
         public async Task AddUserToRepository_ShouldAddUserToDatabase()
         {
             // Arrange
+            var httpContextAccessor = new Mock<IHttpContextAccessor>();
             using var dbContext = new AirbnbDatabaseFake().Context;
             var mockPasswordHasher = new Mock<IPasswordHasherService>();
-            var mockRepository = new UserRepository(dbContext);
+            var mockRepository = new UserRepository(dbContext, httpContextAccessor.Object);
 
             var testUser = UserFixture.CreateTestUser();
 

@@ -60,5 +60,29 @@ namespace airbnb.Tests.Systems.Controllers
             okObjectResult.StatusCode.Should().Be(200);
 
         }
+
+        [Theory]
+        [InlineData(1)]
+        public async Task WhenRemoveSingleRoom_Returns200(int roomId)
+        {
+            // Arrange 
+            var roomService = new Mock<IRoomService>(); 
+            var roomController = new RoomsController(roomService.Object);
+
+            // Act 
+            var result = await roomController.RemoveRoom(roomId);
+
+            // Assert 
+
+            result.Should().BeOfType<ActionResult<bool>>();
+            
+            var objectResult = (ActionResult<bool>)result;
+            objectResult.Result.Should().BeOfType<OkObjectResult>();
+
+            var okObjectResult = (OkObjectResult)objectResult.Result;
+            okObjectResult.StatusCode.Should().Be(200);
+
+
+        }
     }
 }

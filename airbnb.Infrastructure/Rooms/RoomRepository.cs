@@ -202,6 +202,36 @@ namespace airbnb.Infrastructure.Rooms
                 Console.WriteLine($"An error occurred while making a reservation: {ex}");
                 throw;
             }
-        }   
+        }
+
+        /// <summary>
+        /// Remove data from the database
+        /// </summary>
+        /// <param name="roomId">room id</param>
+        /// <returns>true or false</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<bool> Remove(int roomId)
+        {
+            try
+            {
+                var room = await GetRoomById(roomId);
+
+                // Check if the room exists before attempting to remove it
+                if (room == null)
+                {
+                    return false;
+                }
+
+                _context.Rooms.Remove(room);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while removing the data from the database", ex);
+            }
+        }
+
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj": {}
+    "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj": {}
   },
   "projects": {
-    "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj": {
+    "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj",
+        "projectUniqueName": "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj",
         "projectName": "airbnb.Contracts",
-        "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj",
+        "projectPath": "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Contracts\\airbnb.Contracts.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "C:\\_programowanie\\airbnb\\airbnb.Contracts\\obj\\",
+        "outputPath": "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
-                "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj"
+              "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
+                "projectPath": "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj"
               }
             }
           }
@@ -68,14 +68,14 @@
         }
       }
     },
-    "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
+    "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj",
+        "projectUniqueName": "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj",
         "projectName": "airbnb.Domain",
-        "projectPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj",
+        "projectPath": "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Domain\\airbnb.Domain.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "C:\\_programowanie\\airbnb\\airbnb.Domain\\obj\\",
+        "outputPath": "C:\\_programowanie\\dotNET\\airbnb\\airbnb.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

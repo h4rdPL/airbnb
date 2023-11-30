@@ -1,8 +1,6 @@
 ﻿using airbnb.Application.Common.Interfaces;
-using airbnb.Contracts.Authentication;
 using airbnb.Contracts.RoomsOffer;
 using airbnb.Contracts.RoomsReservation;
-using airbnb.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -90,6 +88,25 @@ namespace airbnb.API.Controllers
             } catch (Exception ex)
             {
                 throw new Exception("En Error occured while invoke service", ex);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roomId">Id of the individual room</param>
+        /// <returns>True of false based on the logic</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        [HttpDelete("RemoveItem"), Authorize]
+        public async Task<ActionResult<bool>> RemoveRoom(int roomId)
+        {
+            try
+            {
+                var result = await _roomService.RemoveRoomById(roomId);
+                return Ok(result);
+            } catch (Exception ex)
+            {
+                throw new Exception("An error occured while get the data and invoke service", ex);
             }
         }
     }
