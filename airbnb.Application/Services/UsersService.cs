@@ -38,6 +38,30 @@ namespace airbnb.Application.Services
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="userEmail"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task<bool> DeleteUser(string userEmail)
+        {
+            try
+            {
+                var user = await _userRepository.GetUserByEmail(userEmail); 
+                if (user is null)
+                {
+                    throw new Exception("User does not exist");
+                }
+                var result = await _userRepository.DeleteUser(user);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while invoking repository", ex);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
         public async Task<User> GetUserByEmail(string email)

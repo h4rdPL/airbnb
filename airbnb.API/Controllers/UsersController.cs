@@ -1,6 +1,7 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.Authentication;
 using airbnb.Contracts.Authentication.LoginResponse;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace airbnb.API.Controllers
@@ -63,6 +64,20 @@ namespace airbnb.API.Controllers
             } catch (Exception ex)
             {
                 throw new Exception("En error occured while invoke service", ex);
+            }
+        }
+
+        [HttpDelete("removeUser"), Authorize]
+        public async Task<ActionResult<bool>> DeleteUser(string email)
+        {
+            try
+            {
+                var result = await _userService.DeleteUser(email);
+                return Ok(result);
+
+            } catch (Exception ex)
+            {
+                throw new Exception("An error occured while invoke service", ex);
             }
         }
     }

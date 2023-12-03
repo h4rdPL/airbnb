@@ -66,7 +66,30 @@ namespace airbnb.Infrastructure.Persistence
                 throw new Exception("En erroc occured while insert comment to the database");
             }
         }
-       
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task<bool> DeleteUser(User user)
+        {
+            try
+            {
+                if(user is not null)
+                {
+                    _context.Users.Remove(user);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                return false;
+            } catch(Exception ex)
+            {
+                throw new Exception("An error occured while remove user from the database", ex);
+            }
+        }
+
         /// <summary>
         /// Method which search user by email address 
         /// </summary>
