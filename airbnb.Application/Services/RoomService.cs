@@ -1,6 +1,7 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
 using airbnb.Contracts.RoomsReservation;
+using airbnb.Domain.Enum;
 using AutoMapper;
 
 namespace airbnb.Application.Services
@@ -64,6 +65,38 @@ namespace airbnb.Application.Services
             {
                 throw new Exception("En error occured while invoke repository", ex);
             }  
+        }
+
+        /// <summary>
+        /// Gets a list of rooms based on the specified home type.
+        /// </summary>
+        /// <param name="homeType">The type of home to filter rooms by.</param>
+        /// <returns>A list of rooms matching the specified home type.</returns>
+        public async Task<List<ListOfRoomsResponse>> GetRoomsByHomeType(HomeType homeType)
+        {
+            try
+            {
+                var rooms = await _roomRepository.GetRoomsByHomeType(homeType);
+
+                var response = rooms.Select(room => new ListOfRoomsResponse(
+                    HomeType: room.HomeType,
+                    TotalOccupancy: room.TotalOccupancy,
+                    TotalBedrooms: room.TotalBedrooms,
+                    TotalBathrooms: room.TotalBathrooms,
+                    Summary: room.Summary,
+                    Address: room.Address,
+                    Amenities: room.Amenities,
+                    Price: room.Price,
+                    PublishedAt: room.PublishedAt
+                )).ToList();
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                // Możesz tutaj obsłużyć błędy biznesowe lub rzucić bardziej konkretne wyjątki
+                throw new Exception($"An error occurred in the business logic: {ex.Message}");
+            }
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
 using airbnb.Contracts.RoomsReservation;
+using airbnb.Domain.Enum;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -107,6 +108,26 @@ namespace airbnb.API.Controllers
             } catch (Exception ex)
             {
                 throw new Exception("An error occured while get the data and invoke service", ex);
+            }
+        }
+
+        /// <summary>
+        /// Gets a list of rooms based on the specified home type.
+        /// </summary>
+        /// <param name="homeType">The type of home to filter rooms by.</param>
+        /// <returns>A list of rooms matching the specified home type.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs while invoking the service.</exception>
+        [HttpGet("GetRoomByHomeType")]
+        public async Task<ActionResult<List<ListOfRoomsResponse>>> GetRoomsByHomeType(HomeType homeType)
+        {
+            try
+            {
+                var result = await _roomService.GetRoomsByHomeType(homeType);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while invoke service {ex.Message}");
             }
         }
     }

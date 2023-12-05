@@ -2,6 +2,7 @@
 using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
 using airbnb.Contracts.RoomsReservation;
+using airbnb.Domain.Enum;
 using airbnb.Domain.Models;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
@@ -81,8 +82,27 @@ namespace airbnb.Tests.Systems.Controllers
 
             var okObjectResult = (OkObjectResult)objectResult.Result;
             okObjectResult.StatusCode.Should().Be(200);
+        }
+        [Fact]
+        public async Task GetRoomsByHomeType_ReturnsOkResult()
+        {
+            // Arrange
+            var mockRoomService = new Mock<IRoomService>();
+            var roomsController = new RoomsController(mockRoomService.Object);
 
+            var homeType = HomeType.Apartment; 
 
+            // Symuluj odpowiedź z serwisu
+            var mockRoomList = new List<ListOfRoomsResponse> {  };
+            mockRoomService.Setup(service => service.GetRoomsByHomeType(homeType)).ReturnsAsync(mockRoomList);
+
+            // Act
+            var result = await roomsController.GetRoomsByHomeType(homeType);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var model = Assert.IsAssignableFrom<List<ListOfRoomsResponse>>(okResult.Value);
+            Assert.Equal(mockRoomList, model);
         }
     }
 }

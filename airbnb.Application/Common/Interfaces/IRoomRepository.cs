@@ -1,5 +1,6 @@
 ﻿using airbnb.Contracts.RoomsOffer;
 using airbnb.Contracts.RoomsReservation;
+using airbnb.Domain.Enum;
 using airbnb.Domain.Models;
 
 namespace airbnb.Application.Common.Interfaces
@@ -13,5 +14,6 @@ namespace airbnb.Application.Common.Interfaces
         Task<bool> CancelReservation(int reservationId);
         Task<List<ListOfRoomsResponse>> GetAllRoms();
         Task<bool> Remove(int roomId);
+        Task<List<Room>> GetRoomsByHomeType(HomeType homeType);
     }
 }

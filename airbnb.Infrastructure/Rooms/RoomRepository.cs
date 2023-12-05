@@ -1,6 +1,7 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.RoomsOffer;
 using airbnb.Contracts.RoomsReservation;
+using airbnb.Domain.Enum;
 using airbnb.Domain.Models;
 using airbnb.Infrastructure.ApplicationDbContext;
 using Microsoft.AspNetCore.Http;
@@ -159,6 +160,21 @@ namespace airbnb.Infrastructure.Rooms
         {
             var result = await _context.Rooms.FirstOrDefaultAsync(r => r.Id == id);
             return result;
+        }
+        /// <summary>
+        /// Gets a list of rooms based on the specified home type.
+        /// </summary>
+        /// <param name="homeType">The type of home to filter rooms by.</param>
+        /// <returns>A list of rooms matching the specified home type.</returns>
+        public async Task<List<Room>> GetRoomsByHomeType(HomeType homeType)
+        {
+            var rooms = await _context.Set<Room>()
+                .Where(room => room.HomeType == homeType)
+                .Include(room => room.Address)
+                .Include(room => room.Amenities)
+                .ToListAsync();
+
+            return rooms;
         }
 
         /// <summary>
