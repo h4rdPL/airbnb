@@ -9,9 +9,6 @@
 ## Airbnb Clone
 An upcoming project aiming to replicate the functionality of Airbnb.
 
-## Features
-- Coming Soon
-
 ## Setup & Usage
 - Open the project with Visual Studio
 - Create the database for this project and apply the connection string in the appsettings.json
