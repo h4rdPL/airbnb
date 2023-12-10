@@ -7,7 +7,7 @@
 ![Repobeats Analytics](https://repobeats.axiom.co/api/embed/c111c6557567817dcc0e5bc20cd8b572cc3859af.svg "Repobeats Analytics Image")
 
 ## Airbnb Clone
-Coming Soon
+An upcoming project aiming to replicate the functionality of Airbnb.
 
 ## Features
 - Coming Soon
