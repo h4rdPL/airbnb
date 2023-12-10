@@ -18,12 +18,18 @@ namespace airbnb.API.Controllers
             _userService = usersService;
         }
 
+        /// <summary>
+        /// Registers a new user.
+        /// </summary>
+        /// <param name="registerRequest">The request to register a new user.</param>
+        /// <returns>The result of the registration process.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs during the user registration process.</exception>
         [HttpPost("register")]
-        public async Task<ActionResult<AuthResponse>> Register(AuthenticationRequest RegisterRequest)
+        public async Task<ActionResult<AuthResponse>> Register(AuthenticationRequest registerRequest)
         {
             try
             {
-                var user = await _userService.Register(RegisterRequest);
+                var user = await _userService.Register(registerRequest);
 
                 if (user != null)
                 {
@@ -33,13 +39,19 @@ namespace airbnb.API.Controllers
                 {
                     return BadRequest("Password and repeated password do not match.");
                 }
-            } catch (Exception ex)
-            {
-                throw new Exception("Error while register user", ex);
             }
-           
+            catch (Exception ex)
+            {
+                throw new Exception("Error while registering user", ex);
+            }
         }
 
+        /// <summary>
+        /// Logs in a user.
+        /// </summary>
+        /// <param name="loginRequest">The request to log in a user.</param>
+        /// <returns>The authentication response if login is successful.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs during the login process.</exception>
         [HttpPost("login")]
         public async Task<ActionResult<AuthResponse>> Login(LoginRequest loginRequest)
         {
@@ -47,13 +59,19 @@ namespace airbnb.API.Controllers
             {
                 var response = await _userService.Login(loginRequest);
                 return Ok(response);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception("Error", ex);
             }
-            
         }
 
+        /// <summary>
+        /// Creates a new comment.
+        /// </summary>
+        /// <param name="postNewComment">The request to create a new comment.</param>
+        /// <returns>The result of the comment creation process.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs during the comment creation process.</exception>
         [HttpPost("comment")]
         public async Task<ActionResult<CreateCommentResponse>> CreateComment(CreateCommentsRequest postNewComment)
         {
@@ -61,12 +79,19 @@ namespace airbnb.API.Controllers
             {
                 var result = await _userService.CreateComment(postNewComment);
                 return Ok(result);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                throw new Exception("En error occured while invoke service", ex);
+                throw new Exception("An error occurred while invoking the service", ex);
             }
         }
 
+        /// <summary>
+        /// Deletes a user by email.
+        /// </summary>
+        /// <param name="email">The email of the user to be deleted.</param>
+        /// <returns>True if the user was successfully deleted; otherwise, false.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs during the user deletion process.</exception>
         [HttpDelete("removeUser"), Authorize]
         public async Task<ActionResult<bool>> DeleteUser(string email)
         {
@@ -74,11 +99,11 @@ namespace airbnb.API.Controllers
             {
                 var result = await _userService.DeleteUser(email);
                 return Ok(result);
-
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                throw new Exception("An error occured while invoke service", ex);
+                throw new Exception("An error occurred while invoking the service", ex);
             }
         }
+        }
     }
-}

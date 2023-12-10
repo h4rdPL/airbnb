@@ -12,15 +12,21 @@ namespace airbnb.API.Controllers
     public class RoomsController : ControllerBase
     {
         private readonly IRoomService _roomService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RoomsController"/> class.
+        /// </summary>
+        /// <param name="roomService">The room service.</param>
         public RoomsController(IRoomService roomService)
         {
             _roomService = roomService;
         }
+
         /// <summary>
-        /// 
+        /// Creates a new room offer.
         /// </summary>
-        /// <param name="roomOffer"></param>
-        /// <returns></returns>
+        /// <param name="roomOffer">The request to create a room offer.</param>
+        /// <returns>The result of the room offer creation.</returns>
         [HttpPost("Create"), Authorize]
         public async Task<ActionResult<CreateRoomOfferResponse>> CreateRoomOffer(CreateRoomOfferRequest roomOffer)
         {
@@ -36,10 +42,10 @@ namespace airbnb.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Makes a reservation for a room.
         /// </summary>
-        /// <param name="reservationRequest"></param>
-        /// <returns></returns>
+        /// <param name="reservationRequest">The request to make a reservation.</param>
+        /// <returns>The result of the reservation.</returns>
         [HttpPost("CreateReservation"), Authorize]
         public async Task<ActionResult<MakeReservationResponse>> MakeReservation(MakeReservationRequest reservationRequest)
         {
@@ -55,11 +61,11 @@ namespace airbnb.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Cancels a room reservation.
         /// </summary>
-        /// <param name="reservationId"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <param name="reservationId">The ID of the reservation to be canceled.</param>
+        /// <returns>True if the reservation was canceled successfully; otherwise, false.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs while invoking services.</exception>
         [HttpPost("CancelReservation"), Authorize]
         public async Task<ActionResult<bool>> CancelReservation(int reservationId)
         {
@@ -67,18 +73,18 @@ namespace airbnb.API.Controllers
             {
                 var result = await _roomService.CancelReservation(reservationId);
                 return Ok(result);
-
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                throw new Exception("En error occured when trying to invoke services", ex);
+                throw new Exception("An error occurred when trying to invoke services", ex);
             }
         }
-   
+
         /// <summary>
-        /// 
+        /// Gets a list of all rooms.
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <returns>A list of room details.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs while invoking the service.</exception>
         [HttpGet("GetAllRooms")]
         public async Task<ActionResult<List<ListOfRoomsResponse>>> GetAllRooms()
         {
@@ -86,18 +92,19 @@ namespace airbnb.API.Controllers
             {
                 var result = await _roomService.GetAllRooms();
                 return Ok(result);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                throw new Exception("En Error occured while invoke service", ex);
+                throw new Exception("An Error occurred while invoking the service", ex);
             }
         }
 
         /// <summary>
-        /// 
+        /// Removes a room by its ID.
         /// </summary>
-        /// <param name="roomId">Id of the individual room</param>
-        /// <returns>True of false based on the logic</returns>
-        /// <exception cref="NotImplementedException"></exception>
+        /// <param name="roomId">The ID of the room to be removed.</param>
+        /// <returns>True if the room was successfully removed; otherwise, false.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs while getting the data and invoking the service.</exception>
         [HttpDelete("RemoveItem"), Authorize]
         public async Task<ActionResult<bool>> RemoveRoom(int roomId)
         {
@@ -105,9 +112,10 @@ namespace airbnb.API.Controllers
             {
                 var result = await _roomService.RemoveRoomById(roomId);
                 return Ok(result);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                throw new Exception("An error occured while get the data and invoke service", ex);
+                throw new Exception("An error occurred while getting the data and invoking the service", ex);
             }
         }
 
@@ -127,7 +135,7 @@ namespace airbnb.API.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception($"An error occurred while invoke service {ex.Message}");
+                throw new Exception($"An error occurred while invoking service {ex.Message}");
             }
         }
     }

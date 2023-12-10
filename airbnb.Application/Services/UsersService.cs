@@ -23,11 +23,12 @@ namespace airbnb.Application.Services
             _mapper = mapper;
         }
 
+
         /// <summary>
-        /// 
+        /// Creates a new comment based on the provided comment request.
         /// </summary>
-        /// <param name="postNewComment"></param>
-        /// <returns></returns>
+        /// <param name="postNewComment">The request for creating a new comment.</param>
+        /// <returns>The response containing information about the created comment.</returns>
         public async Task<CreateCommentResponse> CreateComment(CreateCommentsRequest postNewComment)
         {
             var response = await _userRepository.CreateComment(postNewComment);
@@ -36,16 +37,16 @@ namespace airbnb.Application.Services
         }
 
         /// <summary>
-        /// 
+        /// Deletes a user based on the provided user email.
         /// </summary>
-        /// <param name="userEmail"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <param name="userEmail">The email of the user to be deleted.</param>
+        /// <returns>True if the user is successfully deleted; otherwise, false.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs while invoking the repository.</exception>
         public async Task<bool> DeleteUser(string userEmail)
         {
             try
             {
-                var user = await _userRepository.GetUserByEmail(userEmail); 
+                var user = await _userRepository.GetUserByEmail(userEmail);
                 if (user is null)
                 {
                     throw new Exception("User does not exist");
@@ -60,10 +61,10 @@ namespace airbnb.Application.Services
         }
 
         /// <summary>
-        /// 
+        /// Retrieves a user based on the provided email.
         /// </summary>
-        /// <param name="email"></param>
-        /// <returns></returns>
+        /// <param name="email">The email of the user to be retrieved.</param>
+        /// <returns>The user information.</returns>
         public async Task<User> GetUserByEmail(string email)
         {
             var result = await _userRepository.GetUserByEmail(email);
@@ -71,11 +72,11 @@ namespace airbnb.Application.Services
         }
 
         /// <summary>
-        /// 
+        /// Logs in a user based on the provided login request.
         /// </summary>
-        /// <param name="loginRequest"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <param name="loginRequest">The request containing user login information.</param>
+        /// <returns>The authentication response for the logged-in user.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs during the login process.</exception>
         public async Task<AuthResponse> Login(LoginRequest loginRequest)
         {
             try
@@ -89,7 +90,6 @@ namespace airbnb.Application.Services
 
                 var result = _cookieService.SetUserCookie(user);
                 return new AuthResponse(user.FirstName, user.LastName, user.Email);
-
             }
             catch (Exception ex)
             {
@@ -98,11 +98,11 @@ namespace airbnb.Application.Services
         }
 
         /// <summary>
-        /// 
+        /// Registers a new user based on the provided authentication request.
         /// </summary>
-        /// <param name="authenticationRegister"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <param name="authenticationRegister">The request containing user registration information.</param>
+        /// <returns>The authentication response for the registered user.</returns>
+        /// <exception cref="Exception">Thrown when an error occurs during the registration process.</exception>
         public async Task<AuthResponse> Register(AuthenticationRequest authenticationRegister)
         {
             var newUser = new User
@@ -115,13 +115,12 @@ namespace airbnb.Application.Services
 
             if (authenticationRegister.Password != authenticationRegister.RepeatedPassword)
             {
-                throw new Exception("Password are not the same");
-        
+                throw new Exception("Passwords do not match");
             }
+
             await _userRepository.AddUser(newUser);
             return new AuthResponse(newUser.FirstName, newUser.LastName, newUser.Email);
         }
-
     }
 
 }
