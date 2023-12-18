@@ -10,7 +10,9 @@ namespace airbnb.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<IUsersService, UsersService>();
-            services.AddScoped<IEmailService, EmailService>();
+
+            // every time we send email => every time instance is created 
+            services.AddTransient<IEmailService, EmailService>();
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<ICookieService, CookieService>();
             services.AddScoped<IPasswordHasherService, PasswordHasherService>();

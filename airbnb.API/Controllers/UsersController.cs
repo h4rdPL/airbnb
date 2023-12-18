@@ -12,10 +12,12 @@ namespace airbnb.API.Controllers
     {
 
         private readonly IUsersService _userService;
+        private readonly IEmailService _emailService;
 
-        public UsersController(IUsersService usersService)
+        public UsersController(IUsersService usersService, IEmailService emailService)
         {
             _userService = usersService;
+            _emailService = emailService;
         }
 
         /// <summary>
@@ -45,6 +47,14 @@ namespace airbnb.API.Controllers
                 throw new Exception("Error while registering user", ex);
             }
         }
+
+        [HttpPost("Verify")]
+        public async Task<IActionResult> Verify(string email, string subject, string message)
+        {
+            await _emailService.SendEmailAsync(email, subject, message);
+            return Ok("Email sent successfully");
+        }
+
 
         /// <summary>
         /// Logs in a user.

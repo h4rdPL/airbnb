@@ -1,7 +1,6 @@
 ﻿using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.Authentication;
 using airbnb.Contracts.Authentication.LoginResponse;
-using airbnb.Contracts.RoomsOffer;
 using airbnb.Domain.Models;
 using AutoMapper;
 
@@ -22,7 +21,6 @@ namespace airbnb.Application.Services
             _passwordHasher = passwordHasher;
             _mapper = mapper;
         }
-
 
         /// <summary>
         /// Creates a new comment based on the provided comment request.
