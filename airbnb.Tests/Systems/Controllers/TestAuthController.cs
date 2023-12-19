@@ -2,8 +2,6 @@ using airbnb.API.Controllers;
 using airbnb.Application.Common.Interfaces;
 using airbnb.Contracts.Authentication;
 using airbnb.Contracts.Authentication.LoginResponse;
-using airbnb.Contracts.RoomsOffer;
-using airbnb.Domain.Models;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -19,13 +17,14 @@ public class TestAuthController
     {
         // Arrange
         var mockUsersService = new Mock<IUsersService>();
+        var mockEmailService = new Mock<IEmailService>();
         var registerRequest = new AuthenticationRequest(FirstName, LastName, Email, Password, RepeatedPassword);
         var authResponse = new AuthResponse(FirstName, LastName, Email);
         mockUsersService
             .Setup(service => service.Register(registerRequest))
             .ReturnsAsync(authResponse);
 
-        var sut = new UsersController(mockUsersService.Object);
+        var sut = new UsersController(mockUsersService.Object, mockEmailService.Object);
 
         // Act
         var result = await sut.Register(registerRequest);
@@ -45,6 +44,8 @@ public class TestAuthController
     {
         // Arrange
         var mockUsersService = new Mock<IUsersService>();
+        var mockEmailService = new Mock<IEmailService>();
+
         var registerRequest = new AuthenticationRequest(FirstName, LastName, email, password, RepeatedPassword);
         var authResponse = new AuthResponse(FirstName, LastName, email);
 
@@ -52,7 +53,7 @@ public class TestAuthController
             .Setup(service => service.Register(registerRequest))
             .ReturnsAsync(authResponse);
 
-        var sut = new UsersController(mockUsersService.Object);
+        var sut = new UsersController(mockUsersService.Object, mockEmailService.Object);
 
         // Act
         var result = await sut.Register(registerRequest);
@@ -69,6 +70,8 @@ public class TestAuthController
     {
         // Arrange
         var mockUsersService = new Mock<IUsersService>();
+        var mockEmailService = new Mock<IEmailService>();
+
         var registerRequest = new AuthenticationRequest(FirstName, LastName, email, password, RepeatedPassword);
         var authResponse = new AuthResponse(FirstName, LastName, email);
 
@@ -76,7 +79,7 @@ public class TestAuthController
             .Setup(service => service.Register(registerRequest))
             .ReturnsAsync(authResponse);
 
-        var sut = new UsersController(mockUsersService.Object);
+        var sut = new UsersController(mockUsersService.Object, mockEmailService.Object);
 
         // Act
         var result = await sut.Register(registerRequest);

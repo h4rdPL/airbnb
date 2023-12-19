@@ -17,7 +17,9 @@ namespace airbnb.Tests.Systems.Controllers
         {
             // Arrange
             var authService = new Mock<IUsersService>();
-            var usersController = new UsersController(authService.Object);
+            var mockEmailService = new Mock<IEmailService>();
+
+            var usersController = new UsersController(authService.Object, mockEmailService.Object);
 
             var postNewComment = new CreateCommentsRequest
             {
@@ -40,7 +42,9 @@ namespace airbnb.Tests.Systems.Controllers
         {
             // Arrange
             var authService = new Mock<IUsersService>();
-            var usersController = new UsersController(authService.Object);
+            var mockEmailService = new Mock<IEmailService>();
+
+            var usersController = new UsersController(authService.Object, mockEmailService.Object);
             var user = UserFixture.CreateTestUser();
             var userEmail = user.Email;
 

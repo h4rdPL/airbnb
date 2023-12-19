@@ -48,6 +48,14 @@ namespace airbnb.API.Controllers
             }
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="subject"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         [HttpPost("Verify")]
         public async Task<IActionResult> Verify(string email, string subject, string message)
         {

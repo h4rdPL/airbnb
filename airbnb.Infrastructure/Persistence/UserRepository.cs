@@ -12,11 +12,13 @@ namespace airbnb.Infrastructure.Persistence
     {
         private readonly AirbnbDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        
-        public UserRepository(AirbnbDbContext context, IHttpContextAccessor httpContextAccessor)
+        private readonly IEmailService _emailService;
+
+        public UserRepository(AirbnbDbContext context, IHttpContextAccessor httpContextAccessor, IEmailService emailService)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
+            _emailService = emailService;
         }
 
         /// <summary>
@@ -27,8 +29,20 @@ namespace airbnb.Infrastructure.Persistence
         /// <exception cref="NotImplementedException">Regex error, incorrect repeated password</exception>
         public async Task AddUser(User user)
         {
+
+            var code = await _emailService.GenerateVerificationCode();
+
+            if (code == null)
+            {
+                throw new ArgumentNullException(nameof(code));
+            }
+
+            _emailService.SendEmailAsync(user.Email, "Email address verification", code);
+
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
         }
        
         /// <summary>
@@ -68,11 +82,13 @@ namespace airbnb.Infrastructure.Persistence
         }
 
         /// <summary>
-        /// 
+        /// Deletes a user from the database.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <param name="user">The user to be deleted.</param>
+        /// <returns>
+        /// A task representing the asynchronous operation that yields a boolean indicating whether the user was successfully deleted.
+        /// </returns>
+        /// <exception cref="Exception">Thrown if an error occurs while removing the user from the database.</exception>
         public async Task<bool> DeleteUser(User user)
         {
             try

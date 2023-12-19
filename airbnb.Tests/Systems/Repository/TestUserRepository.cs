@@ -15,9 +15,11 @@ namespace airbnb.Tests.Systems.Repository
         {
             // Arrange
             var httpContextAccessor = new Mock<IHttpContextAccessor>();
+            var mockEmailService = new Mock<IEmailService>();
+
             using var dbContext = new AirbnbDatabaseFake().Context;
             var mockPasswordHasher = new Mock<IPasswordHasherService>();
-            var mockRepository = new UserRepository(dbContext, httpContextAccessor.Object);
+            var mockRepository = new UserRepository(dbContext, httpContextAccessor.Object, mockEmailService.Object);
 
             var testUser = UserFixture.CreateTestUser();
 

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Net.Mail;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace airbnb.Application.Services
@@ -13,6 +14,33 @@ namespace airbnb.Application.Services
         public EmailService(IConfiguration config)
         {
             _config = config;
+        }
+
+        /// <summary>
+        /// Generates a random verification code consisting of four sets of four digits separated by hyphens.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation that yields the generated verification code as a string.</returns>
+
+        public Task<string> GenerateVerificationCode()
+        {
+            var random = new Random();
+            var verificationCode = new StringBuilder();
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    verificationCode.Append(random.Next(0, 10)); 
+                }
+
+            
+                if (i < 3)
+                {
+                    verificationCode.Append("-");
+                }
+            }
+
+            return Task.FromResult(verificationCode.ToString());
         }
 
         /// <summary>
@@ -54,5 +82,8 @@ namespace airbnb.Application.Services
                     message
                     ));
         }
+    
+    
+    
     }
 }

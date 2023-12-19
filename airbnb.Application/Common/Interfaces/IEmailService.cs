@@ -6,5 +6,6 @@ namespace airbnb.Application.Common.Interfaces
     {
         Task<bool> IsValidEmail(string email);
         Task SendEmailAsync(string email, string subject, string message);
+        Task<string> GenerateVerificationCode();
     }
 }
